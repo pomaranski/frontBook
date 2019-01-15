@@ -14,3 +14,7 @@ Pull request, as well as comments, are welcome. If you see any issues you're fre
 ### Licence
 
 [MIT](https://choosealicense.com/licenses/mit/)
+
+### Authors
+
+Paweł Pomarański, Adrian Fijałkowski.
