@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {validate} from 'codelyzer/walkerFactory/walkerFn';
+import {PasswordMatchValidator} from '../../validators/PasswordMatchValidator';
 
 @Component({
   selector: 'app-register',
@@ -25,12 +27,13 @@ export class RegisterComponent implements OnInit {
         Validators.maxLength(30)]),
     repeatPassword: new FormControl('',
       [Validators.required,
-        Validators.maxLength(30)]),
+        Validators.maxLength(30)
+      ]),
     email: new FormControl('',
       [Validators.required,
         Validators.email,
         Validators.maxLength(30)]),
-  });
+  }, {validators: PasswordMatchValidator.validate.bind(this)});
 
   constructor() {
   }
@@ -68,4 +71,6 @@ export class RegisterComponent implements OnInit {
       return;
     }
   }
+
+
 }
