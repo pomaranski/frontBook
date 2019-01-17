@@ -1,0 +1,92 @@
+@import "https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300";
+
+#start-body {
+  width: 100%;
+  height: 100%;
+}
+
+#start-content {
+  position: fixed;
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  background: url(/src/assets/img/bck/books-bck.png) no-repeat fixed;
+  background-size: cover;
+}
+
+#start-splash {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 200px;
+  width: 70%;
+  height: 500px;
+  background: rgba(217, 217, 210, 0.2);
+  padding: 50px;
+  font-family: 'Open Sans Condensed', sans-serif;
+  text-align: center;
+}
+
+.start-header {
+  font-size: 10rem;
+  text-decoration-style: double;
+}
+#start-text-front {
+  color: beige;
+}
+#start-text-book {
+  color: brown;
+}
+
+#start-buttons-panel {
+  position: relative;
+  margin: auto;
+  width: 80%;
+}
+
+#start-buttons-panel > button {
+  margin: 1%;
+  width: 40%;
+}
+
+#start-buttons-panel > button:hover {
+  opacity: 1;
+}
+
+#start-splash > hr {
+  margin-bottom: 5%;
+}
+
+#start-description {
+  text-shadow: 0 0 7px beige;
+}
+
+@media only screen and (min-width: 500px) and (max-width: 880px) {
+  .start-header {
+    font-size: 5rem;
+  }
+  #start-splash {
+    width: fit-content;
+    height: fit-content;
+  }
+  #start-buttons-panel > button {
+    width: 50%;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .start-header {
+    font-size: 3rem;
+  }
+  #start-splash {
+    width: fit-content;
+    height: fit-content;
+  }
+  #start-buttons-panel > button {
+    width: 50%;
+  }
+  #start-buttons-panel {
+    width: 100%;
+  }
+
+}
+
