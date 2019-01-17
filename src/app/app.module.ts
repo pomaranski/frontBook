@@ -8,12 +8,22 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {AppRoutingModule} from './app-routing.module';
 import { HomeComponent } from './components/pages/home/home.component';
 import {JwtModule} from '@auth0/angular-jwt';
+import { StartComponent } from './components/pages/start/start.component';
+import { RegisterComponent } from './components/register/register.component';
+import { LayoutComponent } from './components/layout/layout.component';
+import { FooterComponent } from './components/html-objects/footer/footer.component';
+import { NavbarComponent } from './components/html-objects/navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
+    StartComponent,
+    RegisterComponent,
+    LayoutComponent,
+    FooterComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
