@@ -32,7 +32,11 @@ export class AuthService {
       }));
   }
 
+  logout() {
+    localStorage.removeItem('access_token');
+  }
+
   private setToken(token: string) {
-    localStorage.setItem('token', token);
+    localStorage.setItem('access_token', token);
   }
 }

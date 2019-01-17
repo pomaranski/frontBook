@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../../services/auth.service';
 import {AppError} from '../../errors/AppError';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +23,7 @@ export class LoginComponent implements OnInit {
         Validators.maxLength(30)])
   });
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private router: Router) {
   }
 
   ngOnInit() {
@@ -44,9 +45,14 @@ export class LoginComponent implements OnInit {
     }
 
     this.authService.login(this.form.value.login, this.form.value.password).subscribe(
-      (next) => console.log('ok'),
+      () => {
+        this.router.navigate(['home']);
+      },
       (error: AppError) => {
-        console.log(error);
+        this.failed = true;
+        setTimeout(() => {
+          this.failed = false;
+        }, 5000);
       }
     );
   }
