@@ -8,15 +8,15 @@ import {LayoutComponent} from './components/layout/layout.component';
 import {AuthGuardService as AuthGuard} from './services/auth-guard.service';
 
 const routes: Routes = [
+  {path: '', component: StartComponent},
   {
     path: '',
     component: LayoutComponent,
     children: [
       {path: 'home', component: HomeComponent}
-    ],
-    canActivate: [AuthGuard]
+    ]
+    /*canActivate: [AuthGuard]*/
   },
-  {path: '', component: StartComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: '**', redirectTo: 'login', pathMatch: 'full'}
