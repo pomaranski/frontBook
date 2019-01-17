@@ -1,5 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
+import {ErrorHandler, NgModule} from '@angular/core';
 
 import {AppComponent} from './app.component';
 import {LoginComponent} from './components/login/login.component';
@@ -13,6 +13,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { FooterComponent } from './components/html-objects/footer/footer.component';
 import { NavbarComponent } from './components/html-objects/navbar/navbar.component';
+import {AppErrorHandler} from './handlers/AppErrorHandler';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,7 @@ import { NavbarComponent } from './components/html-objects/navbar/navbar.compone
       }
     })
   ],
-  providers: [],
+  providers: [{provide: ErrorHandler, useClass: AppErrorHandler}],
   bootstrap: [AppComponent]
 })
 export class AppModule {

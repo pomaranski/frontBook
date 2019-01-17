@@ -1,3 +1,58 @@
-<p>
-  register works!
-</p>
+<div class="container">
+  <div class="card card-container">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label class="font-weight-normal" for="name">Name</label>
+        <input formControlName="name" id="name" type="text" class="form-control">
+        <div *ngIf="(name.touched || clicked) && name.invalid" class="alert alert-primary">
+          <div *ngIf="name.errors.required">Name is required</div>
+          <div *ngIf="name.errors.maxlength">Name should be maximum 30 characters</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="font-weight-normal" for="lastName">Last name</label>
+        <input formControlName="lastName" id="lastName" type="text" class="form-control">
+        <div *ngIf="(lastName.touched || clicked) && lastName.invalid" class="alert alert-primary">
+          <div *ngIf="lastName.errors.required">Last name is required</div>
+          <div *ngIf="lastName.errors.maxlength">Last name should be maximum 30 characters</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="font-weight-normal" for="login">Login</label>
+        <input formControlName="login" id="login" type="text" class="form-control">
+        <div *ngIf="(login.touched || clicked) && login.invalid" class="alert alert-primary">
+          <div *ngIf="login.errors.required">Login is required</div>
+          <div *ngIf="login.errors.maxlength">Login should be maximum 30 characters</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="font-weight-normal" for="password">Password</label>
+        <input formControlName="password" id="password" type="password" class="form-control">
+        <div *ngIf="(password.touched || clicked) && password.invalid" class="alert alert-primary">
+          <div *ngIf="password.errors.required">Password is required</div>
+          <div *ngIf="password.errors.maxlength">Password should be maximum 30 characters</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="font-weight-normal" for="repeatPassword">Repeat password</label>
+        <input formControlName="repeatPassword" id="repeatPassword" type="password" class="form-control">
+        <div *ngIf="(repeatPassword.touched || clicked) && repeatPassword.invalid" class="alert alert-primary">
+          <div *ngIf="repeatPassword.errors.required">Repeat password is required</div>
+          <div *ngIf="repeatPassword.errors.maxlength">Repeat password should be maximum 30 characters</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="font-weight-normal" for="email">Email</label>
+        <input formControlName="email" id="email" type="text" class="form-control">
+        <div *ngIf="(email.touched || clicked) && email.invalid" class="alert alert-primary">
+          <div *ngIf="email.errors.required">Email is required</div>
+          <div *ngIf="email.errors.email">Wrong format</div>
+          <div *ngIf="email.errors.maxlength">Email should be maximum 30 characters</div>
+        </div>
+      </div>
+      <button class="btn btn-block btn-primary" type="submit">
+        <i class="fa fa-sign-in" aria-hidden="true"></i> Register
+      </button>
+    </form>
+  </div>
+</div>

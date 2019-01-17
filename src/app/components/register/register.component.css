@@ -1,0 +1,20 @@
+.card-container.card {
+  max-width: 500px;
+  padding: 40px 40px;
+}
+
+.card {
+  background-color: white;
+  padding: 20px 25px 30px;
+  margin: 50px auto 25px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  -moz-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.alert {
+  margin-top: 5px;
+}
