@@ -18,6 +18,6 @@ export class FileService {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${this.tokenService.getToken()}`
     });
-    return this.http.get(this.URL + `/offers/${id}/file`, { headers: headers });
+    return this.http.get(this.URL + `/offers/${id}/file`, { headers: headers, responseType: 'blob' });
   }
 }

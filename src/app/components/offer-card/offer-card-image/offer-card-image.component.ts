@@ -11,11 +11,26 @@ export class OfferCardImageComponent implements OnInit {
 
   @Input('offerId') offerId: string;
 
-  constructor(private fileService: FileService) { }
+  image: any;
+
+  constructor(private fileService: FileService) {
+  }
 
   ngOnInit() {
-    console.log(this.offerId);
-    this.fileService.getFile('1').subscribe();
+    this.fileService.getFile('5c3e2a8599f2124bdc36b0fa').subscribe(value => {
+      this.createImageFromBlob(value);
+    });
+  }
+
+  createImageFromBlob(image: Blob) {
+    const reader = new FileReader();
+    reader.addEventListener('load', () => {
+      this.image = reader.result;
+    }, false);
+
+    if (image) {
+      reader.readAsDataURL(image);
+    }
   }
 
 }
