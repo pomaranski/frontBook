@@ -4,10 +4,11 @@ html {
 
 body {
   height: 100%;
+  width: 100%;
   margin: 0;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-image: linear-gradient(rgb(32,124,229), rgb(170,171,173));
+  background-image: linear-gradient(rgb(140, 88, 33), rgb(255, 230, 230));
 }
 
 .form-control.ng-touched.ng-invalid {
