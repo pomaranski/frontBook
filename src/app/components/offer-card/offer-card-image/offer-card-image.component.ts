@@ -15,6 +15,7 @@ export class OfferCardImageComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.offerId);
+    this.fileService.getFile('1').subscribe();
   }
 
 }

@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {environment} from '../../environments/environment';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {TokenService} from './token.service';
 
 @Injectable({
@@ -14,7 +14,10 @@ export class FileService {
   }
 
   getFile(id: string) {
-    //TODO
-    return this.http.get(this.URL + `/offers/${id}/file`);
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.tokenService.getToken()}`
+    });
+    return this.http.get(this.URL + `/offers/${id}/file`, { headers: headers });
   }
 }
