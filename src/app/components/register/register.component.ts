@@ -76,14 +76,7 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
-    const user = new User();
-    user.name = this.name.value;
-    user.lastName = this.lastName.value;
-    user.login = this.login.value;
-    user.password = this.password.value;
-    user.email = this.email.value;
-
-    console.log(user);
+    const user = <User>JSON.parse(JSON.stringify(this.form.value));
 
     this.registerService.register(user).subscribe(
       () => {

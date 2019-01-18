@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {TokenService} from '../../../services/token.service';
+import {Offer} from '../../../classes/offer';
 
 @Component({
   selector: 'app-home',
@@ -10,8 +11,14 @@ export class HomeComponent implements OnInit {
 
   constructor(private tokenService: TokenService) { }
 
+  offer: Offer;
+
   ngOnInit() {
-    console.log(this.tokenService.decodeToken());
+    this.offer = new Offer();
+    this.offer.offerName = 'offerName';
+    this.offer.bookTitle = 'bookTitle';
+    this.offer.city = 'city';
+    this.offer.voivodeship = 'voivodeship';
   }
 
 }

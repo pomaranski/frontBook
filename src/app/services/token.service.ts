@@ -16,4 +16,8 @@ export class TokenService {
   decodeToken(): Token {
     return this.helper.decodeToken(this.helper.tokenGetter());
   }
+
+  getToken() {
+    this.helper.tokenGetter();
+  }
 }
