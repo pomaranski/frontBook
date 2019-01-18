@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../../services/auth.service';
 import {AppError} from '../../errors/appError';
 import {Router} from '@angular/router';
+import {TokenService} from '../../services/token.service';
 
 @Component({
   selector: 'app-login',
@@ -23,11 +24,13 @@ export class LoginComponent implements OnInit {
         Validators.maxLength(30)])
   });
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(private authService: AuthService, private router: Router, private tokenService: TokenService) {
   }
 
   ngOnInit() {
-
+    if (!this.tokenService.isTokenExpired()) {
+      this.router.navigate(['/home']);
+    }
   }
 
   get login() {

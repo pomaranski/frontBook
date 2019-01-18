@@ -16,7 +16,6 @@ export class OfferCardComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.offer.offerName);
   }
 
 }

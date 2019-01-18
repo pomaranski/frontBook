@@ -1,1 +1,7 @@
-<img [src]="image" alt="No file">
+<div *ngIf="image else noImage">
+  <img [src]="image">
+</div>
+
+<ng-template #noImage>
+  <div>No image</div>
+</ng-template>
