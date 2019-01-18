@@ -1,5 +1,5 @@
 import {ErrorHandler} from '@angular/core';
-import {UnauthorizedError} from '../errors/UnauthorizedError';
+import {UnauthorizedError} from '../errors/unauthorizedError';
 
 export class AppErrorHandler implements ErrorHandler{
 

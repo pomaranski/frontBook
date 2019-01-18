@@ -1,7 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {validate} from 'codelyzer/walkerFactory/walkerFn';
-import {PasswordMatchValidator} from '../../validators/PasswordMatchValidator';
+import {PasswordMatchValidator} from '../../validators/passwordMatchValidator';
+import {AppError} from '../../errors/appError';
+import {RegisterService} from '../../services/register.service';
+import {User} from '../../classes/user';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -11,6 +15,7 @@ import {PasswordMatchValidator} from '../../validators/PasswordMatchValidator';
 export class RegisterComponent implements OnInit {
 
   clicked = false;
+  failed = false;
 
   form = new FormGroup({
     name: new FormControl('',
@@ -35,7 +40,7 @@ export class RegisterComponent implements OnInit {
         Validators.maxLength(30)]),
   }, {validators: PasswordMatchValidator.validate.bind(this)});
 
-  constructor() {
+  constructor(private registerService: RegisterService, private router: Router) {
   }
 
   ngOnInit() {
@@ -70,6 +75,27 @@ export class RegisterComponent implements OnInit {
     if (!this.form.valid) {
       return;
     }
+
+    const user = new User();
+    user.name = this.name.value;
+    user.lastName = this.lastName.value;
+    user.login = this.login.value;
+    user.password = this.password.value;
+    user.email = this.email.value;
+
+    console.log(user);
+
+    this.registerService.register(user).subscribe(
+      () => {
+        this.router.navigate(['login']);
+      },
+      (error: AppError) => {
+        this.failed = true;
+        setTimeout(() => {
+          this.failed = false;
+        }, 5000);
+      }
+    );
   }
 
 

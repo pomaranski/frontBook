@@ -57,6 +57,9 @@
         <button class="btn btn-block btn-primary" type="submit">
           <i class="fa fa-sign-in" aria-hidden="true"></i> Register
         </button>
+        <div *ngIf="failed" class="alert alert-primary">
+          Cannot register
+        </div>
       </form>
     </div>
   </div>

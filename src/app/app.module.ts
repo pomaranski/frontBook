@@ -13,7 +13,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { FooterComponent } from './components/html-objects/footer/footer.component';
 import { NavbarComponent } from './components/html-objects/navbar/navbar.component';
-import {AppErrorHandler} from './handlers/AppErrorHandler';
+import {AppErrorHandler} from './handlers/appErrorHandler';
 
 @NgModule({
   declarations: [
