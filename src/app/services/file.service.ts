@@ -14,10 +14,7 @@ export class FileService {
   }
 
   getFile(id: string) {
-    return this.http.get(this.URL + `/offers/${id}/file`, {
-      headers: {
-        'Authentication': `Bearer ${this.tokenService.getToken()}`
-      }
-    });
+    //TODO
+    return this.http.get(this.URL + `/offers/${id}/file`);
   }
 }

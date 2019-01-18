@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.offer = new Offer();
+    this.offer.id = '1';
     this.offer.offerName = 'offerName';
     this.offer.bookTitle = 'bookTitle';
     this.offer.city = 'city';

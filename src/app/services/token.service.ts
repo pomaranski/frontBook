@@ -18,6 +18,6 @@ export class TokenService {
   }
 
   getToken() {
-    this.helper.tokenGetter();
+    return this.helper.tokenGetter();
   }
 }

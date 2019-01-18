@@ -12,13 +12,11 @@ export class OfferCardComponent implements OnInit {
 
   @Input('offer') offer: Offer;
 
-  file;
-
-  constructor(private fileService: FileService) {
+  constructor() {
   }
 
   ngOnInit() {
-    this.fileService.getFile('5c3e2a8599f2124bdc36b0fa').subscribe();
+
   }
 
 }

@@ -15,6 +15,7 @@ import {FooterComponent} from './components/html-objects/footer/footer.component
 import {NavbarComponent} from './components/html-objects/navbar/navbar.component';
 import {AppErrorHandler} from './handlers/appErrorHandler';
 import {OfferCardComponent} from './components/offer-card/offer-card.component';
+import { OfferCardImageComponent } from './components/offer-card/offer-card-image/offer-card-image.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import {OfferCardComponent} from './components/offer-card/offer-card.component';
     FooterComponent,
     NavbarComponent,
     OfferCardComponent,
+    OfferCardImageComponent,
   ],
   imports: [
     BrowserModule,
