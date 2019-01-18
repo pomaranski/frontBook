@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {TokenService} from '../../../services/token.service';
 import {Offer} from '../../../classes/offer';
+import {OfferService} from '../../../services/offer.service';
 
 @Component({
   selector: 'app-home',
@@ -9,17 +10,14 @@ import {Offer} from '../../../classes/offer';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private tokenService: TokenService) { }
+  constructor(private offerService: OfferService) { }
 
-  offer: Offer;
+  offers: Array<Offer>;
 
   ngOnInit() {
-    this.offer = new Offer();
-    this.offer.id = '1';
-    this.offer.offerName = 'offerName';
-    this.offer.bookTitle = 'bookTitle';
-    this.offer.city = 'city';
-    this.offer.voivodeship = 'voivodeship';
+    this.offerService.getAll().subscribe(value => {
+      this.offers = value;
+    });
   }
 
 }

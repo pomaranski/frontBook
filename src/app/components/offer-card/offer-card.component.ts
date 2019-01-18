@@ -6,7 +6,7 @@ import {FileService} from '../../services/file.service';
 @Component({
   selector: 'app-offer-card',
   templateUrl: './offer-card.component.html',
-  styleUrls: ['./offer-card.component.css']
+  styleUrls: ['./offer-card.component.css'],
 })
 export class OfferCardComponent implements OnInit {
 
@@ -16,7 +16,7 @@ export class OfferCardComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    console.log(this.offer.offerName);
   }
 
 }

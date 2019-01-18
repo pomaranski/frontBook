@@ -1,20 +1,32 @@
-<div>
-  <div>
-    {{offer.offerName}}
-  </div>
-  <div>
-    {{offer.bookTitle}}
-  </div>
-  <div>
-    {{offer.city}}
-  </div>
-  <div>
-    {{offer.voivodeship}}
-  </div>
-  <div>
-    {{offer.category?.name}}
-  </div>
-  <div>
-    <app-offer-card-image [offerId]="offer.id"></app-offer-card-image>
+<div class="container">
+  <div class="card card-container">
+    <div class="card-header">{{offer.offerName}}</div>
+    <div class="row">
+      <div class="col-md-6">
+        <table class="table">
+          <tr>
+            <th>Book title: </th>
+            <th>{{offer.bookTitle}}</th>
+          </tr>
+          <tr>
+            <th>City: </th>
+            <th>{{offer.city}}</th>
+          </tr>
+          <tr>
+            <th>Voivodeship: </th>
+            <th>{{offer.voivodeship}}</th>
+          </tr>
+          <tr>
+            <th>Category: </th>
+            <th>{{offer.category?.name}}</th>
+          </tr>
+        </table>
+      </div>
+      <div class="col-md-6">
+        <div>
+          <app-offer-card-image [offerId]="offer.id"></app-offer-card-image>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

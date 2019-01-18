@@ -1,1 +1,4 @@
-<app-offer-card [offer]="offer"></app-offer-card>
+<div>
+  <app-offer-card *ngFor="let offer of offers" [offer]="offer"></app-offer-card>
+</div>
+
