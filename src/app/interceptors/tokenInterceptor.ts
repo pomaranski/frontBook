@@ -1,7 +1,10 @@
 import {Injectable} from '@angular/core';
-import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
+import {HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
 import {TokenService} from '../services/token.service';
 import {Observable} from 'rxjs';
+import {UnauthorizedError} from '../errors/unauthorizedError';
+import {AppError} from '../errors/appError';
+import {catchError} from 'rxjs/operators';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
@@ -16,6 +19,13 @@ export class TokenInterceptor implements HttpInterceptor {
       }
     });
 
-    return next.handle(request);
+    return next.handle(request).pipe(
+      catchError((err: HttpErrorResponse) => {
+        if (err.status === 401) {
+          throw new UnauthorizedError(err);
+        } else {
+          throw new AppError(err);
+        }
+      }));
   }
 }
