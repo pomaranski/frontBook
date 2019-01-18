@@ -3,7 +3,7 @@ import {ErrorHandler, NgModule} from '@angular/core';
 
 import {AppComponent} from './app.component';
 import {LoginComponent} from './components/login/login.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {ReactiveFormsModule} from '@angular/forms';
 import {AppRoutingModule} from './app-routing.module';
 import {HomeComponent} from './components/pages/home/home.component';
@@ -15,7 +15,8 @@ import {FooterComponent} from './components/html-objects/footer/footer.component
 import {NavbarComponent} from './components/html-objects/navbar/navbar.component';
 import {AppErrorHandler} from './handlers/appErrorHandler';
 import {OfferCardComponent} from './components/offer-card/offer-card.component';
-import { OfferCardImageComponent } from './components/offer-card/offer-card-image/offer-card-image.component';
+import {OfferCardImageComponent} from './components/offer-card/offer-card-image/offer-card-image.component';
+import {TokenInterceptor} from './interceptors/tokenInterceptor';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,11 @@ import { OfferCardImageComponent } from './components/offer-card/offer-card-imag
     {
       provide: ErrorHandler,
       useClass: AppErrorHandler
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
     }],
   bootstrap: [AppComponent]
 })

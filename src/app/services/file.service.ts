@@ -14,10 +14,6 @@ export class FileService {
   }
 
   getFile(id: string) {
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${this.tokenService.getToken()}`
-    });
-    return this.http.get(this.URL + `/offers/${id}/file`, { headers: headers, responseType: 'blob' });
+    return this.http.get(this.URL + `/offers/${id}/file`, { responseType: 'blob' });
   }
 }
