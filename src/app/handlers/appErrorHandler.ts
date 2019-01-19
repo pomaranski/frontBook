@@ -1,4 +1,4 @@
-import {ErrorHandler, Injectable, Injector} from '@angular/core';
+import {ErrorHandler, Injectable, Injector, NgZone} from '@angular/core';
 import {UnauthorizedError} from '../errors/unauthorizedError';
 import {Router} from '@angular/router';
 
@@ -13,7 +13,8 @@ export class AppErrorHandler implements ErrorHandler {
     console.error(error);
 
     if (error instanceof UnauthorizedError) {
-      this.injector.get(Router).navigate(['/login']);
+      const ngZone = this.injector.get(NgZone);
+      ngZone.run(() => this.injector.get(Router).navigateByUrl('/login').then());
     }
   }
 }
