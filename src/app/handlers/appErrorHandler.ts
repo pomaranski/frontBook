@@ -14,7 +14,7 @@ export class AppErrorHandler implements ErrorHandler {
 
     if (error instanceof UnauthorizedError) {
       const ngZone = this.injector.get(NgZone);
-      ngZone.run(() => this.injector.get(Router).navigateByUrl('/login').then());
+      ngZone.run(() => this.injector.get(Router).navigateByUrl('/').then());
     }
   }
 }
