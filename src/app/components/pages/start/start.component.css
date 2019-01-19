@@ -57,6 +57,17 @@
   opacity: 1;
 }
 
+#start-button-login:hover {
+  background: rgba(106, 36, 36, 0.7);
+}
+
+#start-button-login {
+  border-color: #bf2e2f;
+}
+
+#start-button-register {
+  border-color: #757567;
+}
 #start-splash > hr {
   margin-bottom: 5%;
 }
@@ -78,6 +89,8 @@
     width: 50%;
   }
 }
+
+
 @media only screen and (max-width: 500px) {
   .start-header {
     font-size: 3rem;
@@ -92,6 +105,5 @@
   #start-buttons-panel {
     width: 100%;
   }
-
 }
 

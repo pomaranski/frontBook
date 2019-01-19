@@ -8,9 +8,38 @@ body {
   margin: 0;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-image: linear-gradient(rgb(140, 88, 33), rgb(255, 230, 230));
+  background-image: linear-gradient(rgb(140, 79, 84), rgb(217, 214, 255));
 }
 
 .form-control.ng-touched.ng-invalid {
   border: 2px solid dodgerblue;
+}
+
+@font-face {
+  font-family: 'heydings_icons';
+  src: url('/src/assets/fonts/heydings_icons.ttf') format('truetype');
+}
+
+.form-font-header {
+  font-family: 'heydings_icons', serif;
+  font-size: 5rem;
+  user-select: none;
+  color: #8e5359;
+  text-shadow: 2px 2px 3px #7c7c7c;
+}
+
+
+.form-control-custom {
+  display: block;
+  width: 100%;
+  border: 0 solid;
+  outline: azure;
+  box-shadow: 0 0 3px #DF3EA7;
+  border-radius: 13px;
+  padding: 7px;
+}
+
+.form-control-custom:focus {
+  outline: none !important;
+  box-shadow: 0 0 7px magenta;
 }

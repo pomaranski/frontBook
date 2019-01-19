@@ -1,3 +1,4 @@
+
 .card-container.card {
   max-width: 500px;
   padding: 40px 40px;
@@ -13,21 +14,6 @@
   -moz-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
   -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
-}
-
-.form-control-custom {
-  display: block;
-  width: 100%;
-  border: 0 solid;
-  outline: azure;
-  box-shadow: 0 0 3px #DF3EA7;
-  border-radius: 5px;
-  padding: 5px;
-}
-
-.form-control-custom:focus {
-  outline: none !important;
-  box-shadow: 0 0 7px magenta;
 }
 
 .alert {
