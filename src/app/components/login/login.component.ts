@@ -47,6 +47,10 @@ export class LoginComponent implements OnInit {
       return;
     }
 
+    if (this.tokenService.isTokenExpired()) {
+      this.tokenService.removeToken();
+    }
+
     this.authService.login(this.form.value.login, this.form.value.password).subscribe(
       () => {
         this.router.navigate(['home']);
