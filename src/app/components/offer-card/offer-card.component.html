@@ -1,30 +1,36 @@
-<div class="container">
+<div class="container single-offer">
   <div class="card card-container">
-    <div class="card-header">{{offer.offerName}}</div>
-    <div class="row">
-      <div class="col-md-6">
-        <table class="table">
-          <tr>
-            <th>Book title: </th>
-            <th>{{offer.bookTitle}}</th>
-          </tr>
-          <tr>
-            <th>City: </th>
-            <th>{{offer.city}}</th>
-          </tr>
-          <tr>
-            <th>Voivodeship: </th>
-            <th>{{offer.voivodeship}}</th>
-          </tr>
-          <tr>
-            <th>Category: </th>
-            <th>{{offer.category?.name}}</th>
-          </tr>
-        </table>
-      </div>
-      <div class="col-md-6">
-        <div>
+    <div class="card-header">
+      <span class="decor-font ">B</span>
+      <span class="ofcard-header" >{{offer.offerName}}</span>
+    </div>
+    <div class="ofcontent">
+      <div class="row ofimage-row">
+        <div id="ofimage-div" >
           <app-offer-card-image [offerId]="offer.id"></app-offer-card-image>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3 decor-font text-info">i</div>
+        <div class="col-md-7">
+          <table id="ofdata"  class="table">
+            <tr>
+              <th>Book title:</th>
+              <td>{{offer.bookTitle}}</td>
+            </tr>
+            <tr>
+              <th>City: </th>
+              <td>{{offer.city}}</td>
+            </tr>
+            <tr>
+              <th>Voivodeship: </th>
+              <td>{{offer.voivodeship}}</td>
+            </tr>
+            <tr>
+              <th>Category: </th>
+              <td>{{offer.category?.name}}</td>
+            </tr>
+          </table>
         </div>
       </div>
     </div>

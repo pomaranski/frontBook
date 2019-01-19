@@ -20,6 +20,10 @@ body {
   src: url('/src/assets/fonts/heydings_icons.ttf') format('truetype');
 }
 
+.decor-font {
+  font-family: 'heydings_icons', serif;
+}
+
 .form-font-header {
   font-family: 'heydings_icons', serif;
   font-size: 5rem;
