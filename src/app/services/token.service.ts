@@ -20,4 +20,8 @@ export class TokenService {
   getToken() {
     return this.helper.tokenGetter();
   }
+
+  removeToken() {
+    localStorage.removeItem('access-token');
+  }
 }
