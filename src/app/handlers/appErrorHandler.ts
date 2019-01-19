@@ -9,7 +9,6 @@ export class AppErrorHandler implements ErrorHandler {
   }
 
   handleError(error: any): void {
-    console.log('Unexpected error');
     console.error(error);
 
     if (error instanceof UnauthorizedError) {

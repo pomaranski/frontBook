@@ -25,7 +25,7 @@ export class TokenInterceptor implements HttpInterceptor {
         if (err.status === 401) {
           throw new UnauthorizedError(err);
         } else {
-          throw new AppError(err);
+          throw err;
         }
       }));
   }
