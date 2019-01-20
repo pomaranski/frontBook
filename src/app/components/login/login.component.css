@@ -21,10 +21,12 @@
   color: brown;
   border-color: beige;
 }
+
 .btn-primary {
-  background: rgba(255, 50 , 10, 0.7);
-  border-color: rgba(255, 50, 10, 0.4);
+  background: rgba(87, 0, 255, 0.7);
+  border-color: rgba(87, 0, 255, 0.4);
 }
+
 .btn-primary:active:focus {
   background: rgba(255, 250 , 10, 0.7);
   border-color: rgba(255, 250, 10, 0.4);

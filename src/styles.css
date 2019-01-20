@@ -8,7 +8,7 @@ body {
   margin: 0;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-image: linear-gradient(rgb(140, 79, 84), rgb(217, 214, 255));
+  background-image: linear-gradient(#3c7c7a, rgb(211, 234, 255));
 }
 
 .form-control.ng-touched.ng-invalid {
@@ -28,7 +28,7 @@ body {
   font-family: 'heydings_icons', serif;
   font-size: 5rem;
   user-select: none;
-  color: #8e5359;
+  color: #3c7c7a;
   text-shadow: 2px 2px 3px #7c7c7c;
 }
 
@@ -38,12 +38,12 @@ body {
   width: 100%;
   border: 0 solid;
   outline: azure;
-  box-shadow: 0 0 3px #DF3EA7;
+  box-shadow: 0 0 3px #00df6e;
   border-radius: 13px;
   padding: 7px;
 }
 
 .form-control-custom:focus {
   outline: none !important;
-  box-shadow: 0 0 7px magenta;
+  box-shadow: 0 0 7px #06ff36;
 }
