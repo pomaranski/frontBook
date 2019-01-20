@@ -4,7 +4,7 @@ import {ErrorHandler, NgModule} from '@angular/core';
 import {AppComponent} from './app.component';
 import {LoginComponent} from './components/login/login.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AppRoutingModule} from './app-routing.module';
 import {HomeComponent} from './components/pages/home/home.component';
 import {JwtModule} from '@auth0/angular-jwt';
@@ -33,6 +33,7 @@ import {TokenInterceptor} from './interceptors/tokenInterceptor';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,

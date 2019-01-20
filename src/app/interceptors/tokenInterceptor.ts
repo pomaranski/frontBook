@@ -9,24 +9,23 @@ import {catchError} from 'rxjs/operators';
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
 
-  constructor(private tokenService: TokenService) {}
+  constructor(private tokenService: TokenService) {
+  }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    if (this.tokenService.getToken() !== undefined) {
-      request = request.clone({
-        setHeaders: {
-          Authorization: `Bearer ${this.tokenService.getToken()}`
-        }
-      });
-    }
+    request = request.clone({
+      setHeaders: {
+        Authorization: `Bearer ${this.tokenService.getToken()}`
+      }
+    });
 
     return next.handle(request).pipe(
       catchError((err: HttpErrorResponse) => {
         if (err.status === 401) {
           throw new UnauthorizedError(err);
         } else {
-          throw new AppError(err);
+          throw err;
         }
       }));
   }
