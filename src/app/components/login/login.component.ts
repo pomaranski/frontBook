@@ -17,8 +17,7 @@ export class LoginComponent implements OnInit {
 
   form = new FormGroup({
     login: new FormControl('',
-      [Validators.required,
-        Validators.maxLength(30)]),
+      [Validators.maxLength(30)]),
     password: new FormControl('',
       [Validators.required,
         Validators.maxLength(30)])
@@ -42,6 +41,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
+
     this.clicked = true;
     if (!this.form.valid) {
       return;

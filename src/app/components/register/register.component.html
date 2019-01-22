@@ -4,16 +4,14 @@
       <span class="form-font-header align-self-center" aria-hidden="true">A</span>
       <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <div class="form-group">
-          <label class="font-weight-normal" for="name">Name</label>
-          <input formControlName="name" id="name" type="text" class="form-control-custom">
+          <app-required-text-field formControlName="name" [name]="'Name'"></app-required-text-field>
           <div *ngIf="(name.touched || clicked) && name.invalid" class="alert alert-primary">
             <div *ngIf="name.errors?.required">Name is required</div>
             <div *ngIf="name.errors?.maxlength">Name should be maximum 30 characters</div>
           </div>
         </div>
         <div class="form-group">
-          <label class="font-weight-normal" for="lastName">Last name</label>
-          <input formControlName="lastName" id="lastName" type="text" class="form-control-custom">
+          <app-required-text-field formControlName="login" [name]="'LastName'"></app-required-text-field>
           <div *ngIf="(lastName.touched || clicked) && lastName.invalid" class="alert alert-primary">
             <div *ngIf="lastName.errors?.required">Last name is required</div>
             <div *ngIf="lastName.errors?.maxlength">Last name should be maximum 30 characters</div>
@@ -47,8 +45,7 @@
           </div>
         </div>
         <div class="form-group">
-          <label class="font-weight-normal" for="email">Email</label>
-          <input formControlName="email" id="email" type="text" class="form-control-custom">
+          <app-required-text-field formControlName="login" [name]="'Email'"></app-required-text-field>
           <div *ngIf="(email.touched || clicked) && email.invalid" class="alert alert-primary">
             <div *ngIf="email.errors?.required">Email is required</div>
             <div *ngIf="email.errors?.email">Wrong format</div>

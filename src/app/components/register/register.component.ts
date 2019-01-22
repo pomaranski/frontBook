@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {validate} from 'codelyzer/walkerFactory/walkerFn';
 import {PasswordMatchValidator} from '../../validators/passwordMatchValidator';
 import {AppError} from '../../errors/appError';
 import {RegisterService} from '../../services/register.service';
@@ -19,14 +18,11 @@ export class RegisterComponent implements OnInit {
 
   form = new FormGroup({
     name: new FormControl('',
-      [Validators.required,
-        Validators.maxLength(30)]),
+      [Validators.maxLength(30)]),
     lastName: new FormControl('',
-      [Validators.required,
-        Validators.maxLength(30)]),
+      [Validators.maxLength(30)]),
     login: new FormControl('',
-      [Validators.required,
-        Validators.maxLength(30)]),
+      [Validators.maxLength(30)]),
     password: new FormControl('',
       [Validators.required,
         Validators.maxLength(30)]),
@@ -35,8 +31,7 @@ export class RegisterComponent implements OnInit {
         Validators.maxLength(30)
       ]),
     email: new FormControl('',
-      [Validators.required,
-        Validators.email,
+      [Validators.email,
         Validators.maxLength(30)]),
   }, {validators: PasswordMatchValidator.validate.bind(this)});
 

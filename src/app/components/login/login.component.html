@@ -4,8 +4,7 @@
       <span class="form-font-header align-self-center" aria-hidden="true">A</span>
       <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <div class="form-group">
-          <label class="font-weight-normal" for="login">Login</label>
-          <input formControlName="login" id="login" type="text" class="form-control-custom">
+          <app-required-text-field formControlName="login" [name]="'Login'"></app-required-text-field>
           <div *ngIf="(login.touched || clicked) && login.invalid" class="alert alert-primary">
             <div *ngIf="login.errors?.required">Login is required</div>
             <div *ngIf="login.errors?.maxlength">Login should be maximum 30 characters</div>

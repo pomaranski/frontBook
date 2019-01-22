@@ -17,6 +17,7 @@ import {AppErrorHandler} from './handlers/appErrorHandler';
 import {OfferCardComponent} from './components/offer-card/offer-card.component';
 import {OfferCardImageComponent} from './components/offer-card/offer-card-image/offer-card-image.component';
 import {TokenInterceptor} from './interceptors/tokenInterceptor';
+import { RequiredTextFieldComponent } from './components/form/required-text-field/required-text-field.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import {TokenInterceptor} from './interceptors/tokenInterceptor';
     NavbarComponent,
     OfferCardComponent,
     OfferCardImageComponent,
+    RequiredTextFieldComponent,
   ],
   imports: [
     BrowserModule,
