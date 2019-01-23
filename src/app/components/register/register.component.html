@@ -11,31 +11,28 @@
           </div>
         </div>
         <div class="form-group">
-          <app-required-text-field formControlName="login" [name]="'LastName'"></app-required-text-field>
+          <app-required-text-field formControlName="lastName" [name]="'Last Name'"></app-required-text-field>
           <div *ngIf="(lastName.touched || clicked) && lastName.invalid" class="alert alert-primary">
             <div *ngIf="lastName.errors?.required">Last name is required</div>
             <div *ngIf="lastName.errors?.maxlength">Last name should be maximum 30 characters</div>
           </div>
         </div>
         <div class="form-group">
-          <label class="font-weight-normal" for="login">Login</label>
-          <input formControlName="login" id="login" type="text" class="form-control-custom">
+          <app-required-text-field formControlName="login" [name]="'Login'"></app-required-text-field>
           <div *ngIf="(login.touched || clicked) && login.invalid" class="alert alert-primary">
             <div *ngIf="login.errors?.required">Login is required</div>
             <div *ngIf="login.errors?.maxlength">Login should be maximum 30 characters</div>
           </div>
         </div>
         <div class="form-group">
-          <label class="font-weight-normal" for="password">Password</label>
-          <input formControlName="password" id="password" type="password" class="form-control-custom">
+          <app-required-password-field formControlName="password" [name]="'Password'"></app-required-password-field>
           <div *ngIf="(password.touched || clicked) && password.invalid" class="alert alert-primary">
             <div *ngIf="password.errors?.required">Password is required</div>
             <div *ngIf="password.errors?.maxlength">Password should be maximum 30 characters</div>
           </div>
         </div>
         <div class="form-group">
-          <label class="font-weight-normal" for="repeatPassword">Repeat password</label>
-          <input formControlName="repeatPassword" id="repeatPassword" type="password" class="form-control-custom">
+          <app-required-password-field formControlName="repeatPassword" [name]="'Repeat password'"></app-required-password-field>
           <div *ngIf="(repeatPassword.touched || clicked) && repeatPassword.invalid" class="alert alert-primary">
             <div *ngIf="repeatPassword.errors?.required">Repeat password is required</div>
             <div *ngIf="repeatPassword.errors?.maxlength">Repeat password should be maximum 30 characters</div>
@@ -45,7 +42,7 @@
           </div>
         </div>
         <div class="form-group">
-          <app-required-text-field formControlName="login" [name]="'Email'"></app-required-text-field>
+          <app-required-text-field formControlName="email" [name]="'Email'"></app-required-text-field>
           <div *ngIf="(email.touched || clicked) && email.invalid" class="alert alert-primary">
             <div *ngIf="email.errors?.required">Email is required</div>
             <div *ngIf="email.errors?.email">Wrong format</div>

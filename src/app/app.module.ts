@@ -18,6 +18,7 @@ import {OfferCardComponent} from './components/offer-card/offer-card.component';
 import {OfferCardImageComponent} from './components/offer-card/offer-card-image/offer-card-image.component';
 import {TokenInterceptor} from './interceptors/tokenInterceptor';
 import { RequiredTextFieldComponent } from './components/form/required-text-field/required-text-field.component';
+import { RequiredPasswordFieldComponent } from './components/form/required-password-field/required-password-field.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { RequiredTextFieldComponent } from './components/form/required-text-fiel
     OfferCardComponent,
     OfferCardImageComponent,
     RequiredTextFieldComponent,
+    RequiredPasswordFieldComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,19 +1,18 @@
-import {Component, Directive, forwardRef, Input, OnInit} from '@angular/core';
-import {NG_VALUE_ACCESSOR, NG_VALIDATORS, ControlValueAccessor, Validator, AbstractControl, ValidationErrors} from '@angular/forms';
-
+import {Component, forwardRef, Input, OnInit} from '@angular/core';
+import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 
 @Component({
-  selector: 'app-required-text-field',
+  selector: 'app-required-password-field',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => RequiredTextFieldComponent),
+      useExisting: forwardRef(() => RequiredPasswordFieldComponent),
       multi: true,
     }],
-  templateUrl: './required-text-field.component.html',
-  styleUrls: ['./required-text-field.component.css'],
+  templateUrl: './required-password-field.component.html',
+  styleUrls: ['./required-password-field.component.css']
 })
-export class RequiredTextFieldComponent implements OnInit, ControlValueAccessor {
+export class RequiredPasswordFieldComponent implements OnInit, ControlValueAccessor {
 
   @Input('name') name: string;
 
@@ -52,5 +51,6 @@ export class RequiredTextFieldComponent implements OnInit, ControlValueAccessor 
   onBlur() {
     this.onTouched();
   }
+
 
 }
