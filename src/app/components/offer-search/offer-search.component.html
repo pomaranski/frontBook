@@ -7,20 +7,19 @@
     <input name="voivodeship" type="search" placeholder="voivodeship" class="form-control " [(ngModel)]="fields[3]"/>
     <button id="find-results" class="btn btn-secondary" (click)="offerSearch()">Find results</button>
   </form>
-  <div *ngIf="filters && filtersActive">
-    <p>Selected search filters:</p>
-    <div class="filter" *ngFor="let filter of filters; index as i">
-      <div (click)="removeFilter(filter.filterIndex)" class="close">X</div>
-      <div class="caption">
+
+  </div>
+<div class="container" id="active-filters" *ngIf="filters && filtersActive">
+  <p>Filters:</p>
+  <div class="filter" *ngFor="let filter of filters; index as i">
+    <div (click)="removeFilter(filter.filterIndex)" class="close">X</div>
+    <div class="caption">
         <span class="filter-name text-monospace">
           {{filter.filterName}}
         </span>
-        <span class="filter-value display-1">
+      <span class="filter-value display-1">
           {{filter.filterValue}}
         </span>
-
-      </div>
     </div>
   </div>
-
 </div>

@@ -4,13 +4,20 @@
   margin-bottom: 20px;
 }
 
-
 #search-form {
   max-width: 700px;
   margin: 0 auto;
   align-content: center;
   padding: 20px;
 }
+
+#active-filters {
+  background: #f5ede6;
+  align-content: center;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
 #search-form > input {
   margin-bottom: 5px;
 }
@@ -22,6 +29,7 @@
 .filter {
   display: inline-block;
   margin-right: 10px;
+  margin-bottom: 5px;
   padding: 5px;
   background: rgba(0, 0, 0, 0.3);
   text-align: center;

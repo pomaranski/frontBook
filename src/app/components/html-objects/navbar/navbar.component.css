@@ -1,16 +1,51 @@
 nav {
   position: relative;
-  /*url("/src/assets/img/header/navbar.jpeg");*/
+  height: 100px;
+  max-width: 960px;
 }
 
 nav > a {
+  display: block;
   color: beige;
+  padding: 10px;
   font-style: oblique;
 }
 
+
 #navbar-container {
-  height: 150px;
-  background-image: linear-gradient(to bottom, rgba(124, 102, 74, 1) 0%,
-  rgba(124, 102, 74, 0.8) 40%,
-  rgba(255,255,255, 0) 100%);
+  height: 200px;
+  margin-bottom: 100px;
+}
+
+#navbar-content {
+  max-width: fit-content;
+  margin: 0 auto;
+}
+
+#header-text {
+  background: rgba(200, 200, 200, 0.2);
+  padding: 20px;
+  align-content: center;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.navbar-brand {
+  margin-bottom: 10px;
+}
+
+@media only screen and (max-width: 440px) {
+  #header-text {
+    padding: 15px;
+  }
+  #header-title {
+    font-size: 70px !important;
+  }
+}
+
+@media only screen and (max-width: 325px) {
+
+  #header-title {
+    font-size: 50px !important;
+  }
 }

@@ -4,8 +4,9 @@
     <app-offer-card *ngFor="let offer of offers" [offer]="offer"></app-offer-card>
   </div>
   <ng-template #noOffersTemp>
-    <div id="no-offers-found">
-      <p>No offers found.</p>
+    <div id="no-offers-found" class="container">
+      <p class="display-4">No offers found.</p>
+      <p><small>Please check if filters you've chosen are correct</small></p>
     </div>
   </ng-template>
 </div>
