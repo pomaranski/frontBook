@@ -2,6 +2,7 @@
   background: #f5ede6;
   padding: 10px;
   margin-bottom: 20px;
+  box-shadow: 2px 0 10px black;
 }
 
 #search-form {
@@ -16,6 +17,7 @@
   align-content: center;
   padding: 20px;
   margin-bottom: 20px;
+  box-shadow: 2px 0 10px black;
 }
 
 #search-form > input {

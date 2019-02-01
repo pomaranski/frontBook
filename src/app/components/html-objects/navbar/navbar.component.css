@@ -13,8 +13,10 @@ nav > a {
 
 
 #navbar-container {
-  height: 200px;
-  margin-bottom: 100px;
+  height: fit-content;
+  margin-bottom: 50px;
+  background: #7c664a;
+  box-shadow: 2px 0 10px black;
 }
 
 #navbar-content {
@@ -43,9 +45,22 @@ nav > a {
   }
 }
 
+@media only screen and (max-width: 346px) {
+  #navbar-container {
+    height: 250px;
+  }
+}
+
+
 @media only screen and (max-width: 325px) {
 
   #header-title {
     font-size: 50px !important;
+  }
+}
+
+@media only screen and (max-width: 249px) {
+  #navbar-container {
+    height: 300px;
   }
 }
