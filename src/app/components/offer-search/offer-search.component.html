@@ -1,0 +1,11 @@
+<div id="search-div">
+
+  <button id="open-search" name="openSearch" class="btn btn-light" (click)="toggleSearch()">{{searchBtnName}}</button>
+  <form *ngIf="isSearchOpened" id="search-form">
+    <input name="offerName" type="search" placeholder="offer name" class="form-control" [(ngModel)]="offerName"/>
+    <input name="bookTitle" type="search" placeholder="book title" class="form-control" [(ngModel)]="bookTitle"/>
+    <input name="city" type="search" placeholder="city" class="form-control " [(ngModel)]="city"/>
+    <input name="voivodeship" type="search" placeholder="voivodeship" class="form-control " [(ngModel)]="voivodeship"/>
+    <button id="find-results" class="btn btn-secondary" (click)="offerSearch()">Find results</button>
+  </form>
+</div>

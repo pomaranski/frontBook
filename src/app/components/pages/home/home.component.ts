@@ -15,6 +15,12 @@ export class HomeComponent implements OnInit {
   offers: Array<Offer>;
 
   ngOnInit() {
+
+    this.offerService.offers$
+      .subscribe(
+        (offersObs) => offersObs
+          .toPromise()
+          .then(offers => this.offers = offers));
     this.offerService.getAll().subscribe(value => {
       this.offers = value;
     });

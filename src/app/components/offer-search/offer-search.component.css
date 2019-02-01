@@ -1,0 +1,21 @@
+#search-div {
+  max-width: 100%;
+  margin: 20px;
+}
+#search-form {
+  max-width: 700px;
+  margin: 0 auto;
+  align-content: center;
+  padding: 20px;
+  background-color: rgba(186, 255, 148, 0.76);
+}
+#search-form > input {
+  margin-bottom: 5px;
+}
+
+#open-search, #find-results {
+  width: 100%;
+}
+#open-search {
+  margin-bottom: 15px;
+}
