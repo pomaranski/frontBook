@@ -1,11 +1,26 @@
-<div id="search-div">
-
+<div id="search-div" class="container">
   <button id="open-search" name="openSearch" class="btn btn-light" (click)="toggleSearch()">{{searchBtnName}}</button>
   <form *ngIf="isSearchOpened" id="search-form">
-    <input name="offerName" type="search" placeholder="offer name" class="form-control" [(ngModel)]="offerName"/>
-    <input name="bookTitle" type="search" placeholder="book title" class="form-control" [(ngModel)]="bookTitle"/>
-    <input name="city" type="search" placeholder="city" class="form-control " [(ngModel)]="city"/>
-    <input name="voivodeship" type="search" placeholder="voivodeship" class="form-control " [(ngModel)]="voivodeship"/>
+    <input name="offerName" type="search" placeholder="offer name" class="form-control" [(ngModel)]="fields[0]"/>
+    <input name="bookTitle" type="search" placeholder="book title" class="form-control" [(ngModel)]="fields[1]"/>
+    <input name="city" type="search" placeholder="city" class="form-control " [(ngModel)]="fields[2]"/>
+    <input name="voivodeship" type="search" placeholder="voivodeship" class="form-control " [(ngModel)]="fields[3]"/>
     <button id="find-results" class="btn btn-secondary" (click)="offerSearch()">Find results</button>
   </form>
+  <div *ngIf="filters && filtersActive">
+    <p>Selected search filters:</p>
+    <div class="filter" *ngFor="let filter of filters; index as i">
+      <div (click)="removeFilter(filter.filterIndex)" class="close">X</div>
+      <div class="caption">
+        <span class="filter-name text-monospace">
+          {{filter.filterName}}
+        </span>
+        <span class="filter-value display-1">
+          {{filter.filterValue}}
+        </span>
+
+      </div>
+    </div>
+  </div>
+
 </div>

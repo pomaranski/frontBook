@@ -26,4 +26,14 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  areOffersPopulated() {
+    if (this.offers !== null) {
+      if (this.offers !== undefined) {
+        if (this.offers.length !== 0) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
 }

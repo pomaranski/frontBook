@@ -1,9 +1,16 @@
 nav {
-  background: #7c664a;
-
+  position: relative;
+  /*url("/src/assets/img/header/navbar.jpeg");*/
 }
 
 nav > a {
   color: beige;
   font-style: oblique;
+}
+
+#navbar-container {
+  height: 150px;
+  background-image: linear-gradient(to bottom, rgba(124, 102, 74, 1) 0%,
+  rgba(124, 102, 74, 0.8) 40%,
+  rgba(255,255,255, 0) 100%);
 }
