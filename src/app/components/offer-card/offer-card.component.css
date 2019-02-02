@@ -18,6 +18,12 @@
   font-style: oblique;
 }
 
+.single-offer {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  box-shadow: 0 0 15px black;
+}
+
 #ofdata th{
   color: #5d7c6e;
 }

@@ -21,6 +21,7 @@ import { RequiredTextFieldComponent } from './components/form/required-text-fiel
 import { RequiredPasswordFieldComponent } from './components/form/required-password-field/required-password-field.component';
 import { OfferSearchComponent } from './components/offer-search/offer-search.component';
 import { CreateOfferComponent } from './components/create-offer/create-offer.component';
+import { DescriptionBoxFieldComponent } from './components/form/description-box-field/description-box-field.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { CreateOfferComponent } from './components/create-offer/create-offer.com
     RequiredPasswordFieldComponent,
     OfferSearchComponent,
     CreateOfferComponent,
+    DescriptionBoxFieldComponent,
   ],
   imports: [
     BrowserModule,

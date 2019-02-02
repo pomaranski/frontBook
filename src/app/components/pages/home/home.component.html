@@ -1,6 +1,6 @@
 <div id="home-body">
   <app-offer-search></app-offer-search>
-  <div *ngIf="areOffersPopulated(); else noOffersTemp" id="home-offers-container">
+  <div *ngIf="areOffersPopulated(); else noOffersTemp" id="home-offers-container" class="container">
     <app-offer-card *ngFor="let offer of offers" [offer]="offer"></app-offer-card>
   </div>
   <ng-template #noOffersTemp>
