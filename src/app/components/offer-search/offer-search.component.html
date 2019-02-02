@@ -14,12 +14,12 @@
   <div class="filter" *ngFor="let filter of filters; index as i">
     <div (click)="removeFilter(filter.filterIndex)" class="close">X</div>
     <div class="caption">
-        <span class="filter-name text-monospace">
+        <div class="filter-name text-monospace">
           {{filter.filterName}}
-        </span>
-      <span class="filter-value display-1">
+        </div>
+      <div class="filter-value display-1">
           {{filter.filterValue}}
-        </span>
+        </div>
     </div>
   </div>
 </div>

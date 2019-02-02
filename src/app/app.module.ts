@@ -20,6 +20,7 @@ import {TokenInterceptor} from './interceptors/tokenInterceptor';
 import { RequiredTextFieldComponent } from './components/form/required-text-field/required-text-field.component';
 import { RequiredPasswordFieldComponent } from './components/form/required-password-field/required-password-field.component';
 import { OfferSearchComponent } from './components/offer-search/offer-search.component';
+import { CreateOfferComponent } from './components/create-offer/create-offer.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { OfferSearchComponent } from './components/offer-search/offer-search.com
     RequiredTextFieldComponent,
     RequiredPasswordFieldComponent,
     OfferSearchComponent,
+    CreateOfferComponent,
   ],
   imports: [
     BrowserModule,
