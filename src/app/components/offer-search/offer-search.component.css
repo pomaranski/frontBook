@@ -14,10 +14,16 @@
 
 #active-filters {
   background: #f5ede6;
+  display: flex;
+  flex-flow: row wrap;
   align-content: center;
   padding: 20px;
   margin-bottom: 20px;
   box-shadow: 2px 0 10px black;
+}
+
+.line-break {
+  width: 100%;
 }
 
 #search-form > input {
@@ -36,7 +42,7 @@
   background: rgba(0, 0, 0, 0.3);
   text-align: center;
   color: beige;
-  width: fit-content;
+  width: 150px;
   border-radius: 10px;
 }
 

@@ -10,8 +10,8 @@
 
   </div>
 <div class="container" id="active-filters" *ngIf="filters && filtersActive">
-  <p>Filters:</p>
-  <div class="filter" *ngFor="let filter of filters; index as i">
+  <p>Filters:</p><div class="line-break"></div>
+  <div class="filter" *ngFor="let filter of filters">
     <div (click)="removeFilter(filter.filterIndex)" class="close">X</div>
     <div class="caption">
         <div class="filter-name text-monospace">

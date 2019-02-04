@@ -5,15 +5,14 @@
       <span class="ofcard-header" >{{offer.offerName}}</span>
     </div>
     <div class="ofcontent">
-      <div class="row ofimage-row">
-        <div id="ofimage-div" >
-          <app-offer-card-image [offerId]="offer.id"></app-offer-card-image>
-        </div>
-      </div>
       <div class="row">
-        <div class="col-md-3 decor-font text-info">i</div>
-        <div class="col-md-7">
-          <table id="ofdata"  class="table">
+        <div class="col-md-6">
+          <div class="ofimage-div">
+              <app-offer-card-image [offerId]="offer.id"></app-offer-card-image>
+          </div>
+        </div>
+        <div class="col-5">
+          <table id="ofdata" class="table">
             <tr>
               <th>Book title:</th>
               <td>{{offer.bookTitle}}</td>
