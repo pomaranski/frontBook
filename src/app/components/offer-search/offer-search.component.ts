@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Offer} from '../../classes/offer';
 import {OfferService} from '../../services/offer.service';
 import {FilterBindingClass} from '../../classes/FilterBindingClass';
+import {ActivatedRoute, Router, RoutesRecognized} from '@angular/router';
 
 @Component({
   selector: 'app-offer-search',
@@ -16,12 +17,36 @@ export class OfferSearchComponent implements OnInit {
 
   filtersActive = false;
 
-  constructor(private offerService: OfferService) { }
+  constructor(private offerService: OfferService,
+              private activatedRoute: ActivatedRoute,
+              private router: Router) { }
 
   ngOnInit() {
+    this.activatedRoute.queryParamMap.subscribe( params => {
+      this.fields[0] = params.get('name');
+      this.fields[1] = params.get('title');
+      this.fields[2] = params.get('city');
+      this.fields[3] = params.get('voivodeship');
+      this.queryOffers();
+    });
   }
 
   offerSearch() {
+    this.router.navigate([], {
+      relativeTo: this.activatedRoute,
+      queryParams: {
+        name: this.fields[0],
+        title: this.fields[1],
+        city: this.fields[2],
+        voivodeship: this.fields[3]
+      },
+      queryParamsHandling: 'merge',
+      skipLocationChange: false
+    });
+  }
+
+
+  queryOffers() {
     const offer = new Offer();
 
     offer.offerName = this.checkAssign(this.fields[0]);
@@ -34,6 +59,7 @@ export class OfferSearchComponent implements OnInit {
     console.log(offer);
     this.offerService.getAllByFilter(offer);
   }
+
 
   toggleSearch() {
     if (this.isSearchOpened) {

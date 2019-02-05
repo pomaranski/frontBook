@@ -15,15 +15,19 @@ export class HomeComponent implements OnInit {
   offers: Array<Offer>;
 
   ngOnInit() {
-
     this.offerService.offers$
       .subscribe(
         (offersObs) => offersObs
           .toPromise()
           .then(offers => this.offers = offers));
-    this.offerService.getAll().subscribe(value => {
-      this.offers = value;
-    });
+    /*
+    if (!this.offers) {
+      this.offerService.getAll().subscribe(value => {
+        console.log('reloaded offers empty');
+        this.offers = value;
+      });
+    }
+    */
   }
 
   areOffersPopulated() {

@@ -7,6 +7,7 @@ import {RegisterComponent} from './components/register/register.component';
 import {LayoutComponent} from './components/layout/layout.component';
 import {AuthGuardService as AuthGuard} from './services/auth-guard.service';
 import {CreateOfferComponent} from './components/create-offer/create-offer.component';
+import {OfferSearchComponent} from './components/offer-search/offer-search.component';
 
 const routes: Routes = [
   {path: '', component: StartComponent},
@@ -14,7 +15,16 @@ const routes: Routes = [
     path: '',
     component: LayoutComponent,
     children: [
-      {path: 'home', component: HomeComponent}
+      {
+        path: 'home',
+        component: HomeComponent,
+        children: [
+          {
+            path: 'search',
+            component: OfferSearchComponent
+          }
+        ]
+      }
     ]
     /*canActivate: [AuthGuard]*/
   },
