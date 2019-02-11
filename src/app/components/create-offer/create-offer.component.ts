@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {PasswordMatchValidator} from '../../validators/passwordMatchValidator';
+import {OfferService} from '../../services/offer.service';
+import {AppError} from '../../errors/appError';
 
 @Component({
   selector: 'app-create-offer',
@@ -10,7 +12,7 @@ import {PasswordMatchValidator} from '../../validators/passwordMatchValidator';
 export class CreateOfferComponent implements OnInit {
 
   form = new FormGroup({
-    name: new FormControl('',
+    offerName: new FormControl('',
       [Validators.maxLength(30)]),
     bookTitle: new FormControl('',
       [Validators.maxLength(50)]),
@@ -21,16 +23,17 @@ export class CreateOfferComponent implements OnInit {
         Validators.maxLength(30)]),
     description: new FormControl('',
       [Validators.required,
-        Validators.maxLength(150)
-      ])
+        Validators.maxLength(150)]),
+    file: new FormControl('')
   });
   clicked = false;
   failed = false;
 
-  constructor() { }
+  constructor(private offerService: OfferService) {
+  }
 
-  get name() {
-    return this.form.get('name');
+  get offerName() {
+    return this.form.get('offerName');
   }
 
   get bookTitle() {
@@ -49,10 +52,52 @@ export class CreateOfferComponent implements OnInit {
     return this.form.get('description');
   }
 
+  get file() {
+    return this.form.get('file');
+  }
+
   ngOnInit() {
   }
 
-  nextPart() {
-    //this.failed = true;
+  onFileChange(event) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.file.setValue(file);
+    }
   }
+
+  submit() {
+    this.clicked = true;
+    if (!this.form.valid) {
+      return;
+    }
+
+    const input = this.prepareForm();
+
+    this.offerService.add(input).subscribe(
+      () => {
+
+      },
+      (error: AppError) => {
+        this.failed = true;
+        setTimeout(() => {
+          this.failed = false;
+        }, 5000);
+      }
+    );
+  }
+
+  prepareForm(): FormData {
+    const input = new FormData();
+
+    input.append('offerName', this.offerName.value);
+    input.append('bookTitle', this.bookTitle.value);
+    input.append('city', this.city.value);
+    input.append('voivodeship', this.voivodeship.value);
+    input.append('description', this.description.value);
+    input.append('file', this.file.value);
+
+    return input;
+  }
+
 }

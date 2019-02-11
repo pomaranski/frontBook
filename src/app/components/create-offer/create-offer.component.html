@@ -3,12 +3,12 @@
   <div class="container">
     <div class="card card-container">
       <span class="form-font-header align-self-center" aria-hidden="true">J</span>
-      <form [formGroup]="form" (ngSubmit)="nextPart()">
+      <form [formGroup]="form" (ngSubmit)="submit()">
         <div class="form-group mb-5">
-          <app-required-text-field formControlName="name" [name]="'Name'"></app-required-text-field>
-          <div *ngIf="(name.touched || clicked) && name.invalid" class="alert alert-primary">
-            <div *ngIf="name.errors?.required">Name is required</div>
-            <div *ngIf="name.errors?.maxlength">Name should be maximum 30 characters</div>
+          <app-required-text-field formControlName="offerName" [name]="'Offer Name'"></app-required-text-field>
+          <div *ngIf="(offerName.touched || clicked) && offerName.invalid" class="alert alert-primary">
+            <div *ngIf="offerName.errors?.required">Name is required</div>
+            <div *ngIf="offerName.errors?.maxlength">Name should be maximum 30 characters</div>
           </div>
         </div>
         <div class="form-group mb-5">
@@ -38,6 +38,9 @@
             <div *ngIf="description.errors?.required">Description is required</div>
             <div *ngIf="description.errors?.maxlength">Description should be maximum 150 characters</div>
           </div>
+        </div>
+        <div class="form-group mb-5">
+          <input formControlName="file" type="file" (change)="onFileChange($event)"/>
         </div>
         <button class="btn btn-block btn-secondary" type="submit">
           <i class="fa fa-sign-in" aria-hidden="true"></i> Add offer

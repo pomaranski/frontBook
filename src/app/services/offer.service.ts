@@ -26,7 +26,7 @@ export class OfferService {
     this.offers.next(newData);
     return newData;
   }
-  add(offer: Offer) {
+  add(offer) {
     return this.http.post<Offer>(this.URL + '/offers', offer);
   }
   modify(offer: Offer) {
