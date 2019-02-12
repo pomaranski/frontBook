@@ -29,6 +29,8 @@ export class CreateOfferComponent implements OnInit {
   clicked = false;
   failed = false;
 
+  url: string;
+
   constructor(private offerService: OfferService) {
   }
 
@@ -62,7 +64,12 @@ export class CreateOfferComponent implements OnInit {
   onFileChange(event) {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
-      this.file.setValue(file);
+      this.file.setValue(file ? file.name : '');
+
+      const reader = new FileReader();
+      reader.onload = () => this.url = reader.result;
+
+      reader.readAsDataURL(file);
     }
   }
 
