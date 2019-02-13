@@ -7,7 +7,7 @@
       <div class="form-group">
         <label for="exampleFormControlSelect1">Offers per page</label>
         <select name="pageSizeSelect" class="form-control" id="exampleFormControlSelect1"
-        (change)="getOffersPaged(page, $event.target.value)">
+        (change)="changePageSize(0, $event.target.value)">
           <option>2</option>
           <option selected>5</option>
           <option>10</option>
@@ -15,9 +15,14 @@
       </div>
       <nav aria-label="Page navigation example">
         <ul class="pagination">
-          <li class="page-item"><a class="page-link">Previous</a></li>
-          <li class="page-item" *ngFor="let page of pages"><a class="page-link">{{page}}</a></li>
-          <li class="page-item"><a class="page-link">Next</a></li>
+          <li class="page-item" [class.disabled] = "page - 1 < 0" (click)="previous()"><a class="page-link">Previous</a></li>
+          <li class="page-item" [attr.data-selected]="false"
+              *ngFor="let page of pages; index as i" [class.active]="pageHighlightStatus[i]">
+            <a class="page-link" (click)="selectPage(i)">
+              {{page + 1}}
+            </a>
+          </li>
+          <li class="page-item" [class.disabled] = "page >= totalPagesCount - 1" (click)="next()" ><a class="page-link">Next</a></li>
         </ul>
       </nav>
     </form>
@@ -33,7 +38,7 @@
       </thead>
       <tbody>
       <tr *ngFor="let offer of myOffers; index as i">
-        <th scope="row">{{i}}</th>
+        <th scope="row">{{i + pageSize * page + 1}}</th>
         <td>{{offer.offerName}}</td>
         <td>{{offer.bookTitle}}</td>
         <td>{{offer.createdAt}}</td>
