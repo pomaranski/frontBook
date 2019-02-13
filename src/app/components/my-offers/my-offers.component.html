@@ -1,0 +1,46 @@
+<app-navbar></app-navbar>
+
+<div class="container offers-container">
+  <p class="display-4">Your offers:</p>
+  <div id="offers-tab">
+    <form>
+      <div class="form-group">
+        <label for="exampleFormControlSelect1">Offers per page</label>
+        <select name="pageSizeSelect" class="form-control" id="exampleFormControlSelect1"
+        (change)="getOffersPaged(page, $event.target.value)">
+          <option>2</option>
+          <option selected>5</option>
+          <option>10</option>
+        </select>
+      </div>
+      <nav aria-label="Page navigation example">
+        <ul class="pagination">
+          <li class="page-item"><a class="page-link">Previous</a></li>
+          <li class="page-item" *ngFor="let page of pages"><a class="page-link">{{page}}</a></li>
+          <li class="page-item"><a class="page-link">Next</a></li>
+        </ul>
+      </nav>
+    </form>
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Book title</th>
+        <th scope="col">Date of creation</th>
+        <th scope="col">Expires</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let offer of myOffers; index as i">
+        <th scope="row">{{i}}</th>
+        <td>{{offer.offerName}}</td>
+        <td>{{offer.bookTitle}}</td>
+        <td>{{offer.createdAt}}</td>
+        <td>{{(offer.expires? offer.expires : 'Never')}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<app-footer></app-footer>

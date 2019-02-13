@@ -8,6 +8,7 @@ import {LayoutComponent} from './components/layout/layout.component';
 import {AuthGuardService as AuthGuard} from './services/auth-guard.service';
 import {CreateOfferComponent} from './components/create-offer/create-offer.component';
 import {OfferSearchComponent} from './components/offer-search/offer-search.component';
+import {MyOffersComponent} from './components/my-offers/my-offers.component';
 
 const routes: Routes = [
   {path: '', component: StartComponent},
@@ -31,6 +32,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'new_offer', component: CreateOfferComponent},
+  {path: 'my_offers', component: MyOffersComponent},
   {path: '**', redirectTo: '', pathMatch: 'full'}
 ];
 

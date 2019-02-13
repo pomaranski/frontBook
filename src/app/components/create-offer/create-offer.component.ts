@@ -86,6 +86,7 @@ export class CreateOfferComponent implements OnInit {
 
       },
       (error: AppError) => {
+        console.log(error);
         this.failed = true;
         setTimeout(() => {
           this.failed = false;

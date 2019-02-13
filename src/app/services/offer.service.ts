@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {Offer} from '../classes/offer';
 import {Observable, Subject} from 'rxjs';
+import {ContentType} from '@angular/http/src/enums';
+import {Page} from '../classes/Page';
 
 @Injectable({
   providedIn: 'root'
@@ -26,11 +28,22 @@ export class OfferService {
     this.offers.next(newData);
     return newData;
   }
-  add(offer) {
-    return this.http.post<Offer>(this.URL + '/offers', offer);
+
+  getShortForMe() {
+    return this.http.get<Array<Offer>>(this.URL + '/offers/my/short');
+  }
+
+  getShortForMePaged(page: string, pageSize: string) {
+    const param = {page: page, limit: pageSize};
+    return this.http.get<Page>(this.URL + '/offers/my/short/p', {params: param} );
+  }
+
+  add(formData: FormData) {
+    return this.http.post<FormData>(this.URL + '/offers', formData);
   }
   modify(offer: Offer) {
     return this.http.put<Offer>(this.URL + '/offers/' + offer.id, offer);
   }
+
 
 }
