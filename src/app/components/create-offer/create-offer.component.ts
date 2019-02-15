@@ -64,12 +64,12 @@ export class CreateOfferComponent implements OnInit {
   onFileChange(event) {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
-      this.file.setValue(file ? file.name : '');
-
+      this.file.setValue(file);
+      const copied = file;
       const reader = new FileReader();
       reader.onload = () => this.url = reader.result;
 
-      reader.readAsDataURL(file);
+      reader.readAsDataURL(copied);
     }
   }
 
