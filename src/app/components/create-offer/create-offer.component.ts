@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {PasswordMatchValidator} from '../../validators/passwordMatchValidator';
 import {OfferService} from '../../services/offer.service';
 import {AppError} from '../../errors/appError';
+import {Route, Router} from '@angular/router';
 
 @Component({
   selector: 'app-create-offer',
@@ -31,7 +32,8 @@ export class CreateOfferComponent implements OnInit {
 
   url: string;
 
-  constructor(private offerService: OfferService) {
+  constructor(private offerService: OfferService,
+              private router: Router) {
   }
 
   get offerName() {
@@ -68,7 +70,6 @@ export class CreateOfferComponent implements OnInit {
       const copied = file;
       const reader = new FileReader();
       reader.onload = () => this.url = reader.result;
-
       reader.readAsDataURL(copied);
     }
   }
@@ -83,7 +84,7 @@ export class CreateOfferComponent implements OnInit {
 
     this.offerService.add(input).subscribe(
       () => {
-
+        this.router.navigateByUrl('/offer_added');
       },
       (error: AppError) => {
         console.log(error);
@@ -103,7 +104,9 @@ export class CreateOfferComponent implements OnInit {
     input.append('city', this.city.value);
     input.append('voivodeship', this.voivodeship.value);
     input.append('description', this.description.value);
-    input.append('file', this.file.value);
+    if (this.file) {
+      input.append('file', this.file.value);
+    }
 
     return input;
   }

@@ -3,6 +3,7 @@ import {OfferService} from '../../services/offer.service';
 import {Offer} from '../../classes/offer';
 import {BehaviorSubject} from 'rxjs';
 import {Page} from '../../classes/Page';
+import {OfferPageButton} from '../../classes/OfferPageButton';
 
 @Component({
   selector: 'app-my-offers',
@@ -14,10 +15,12 @@ export class MyOffersComponent implements OnInit {
   myOffers: Array<Offer>;
   page = 0;
   pageSize = 5;
-  pages = new Array<number>();
+  pages = new Array<OfferPageButton>();
 
   pageHighlightStatus = new Array<boolean>();
   totalPagesCount: number;
+
+  pageNavigationEnabled = true;
 
   constructor(private offerService: OfferService) { }
 
@@ -43,22 +46,43 @@ export class MyOffersComponent implements OnInit {
         this.myOffers = data.content;
         this.page = data.number;
         this.totalPages(data);
+        console.log(data);
       });
     this.pageSize = size;
   }
 
   totalPages(data: Page) {
+    this.pageNavigationEnabled = true;
     this.pages = [];
-    let pagesLimit = this.page + 5;
-    if (data.totalPages - this.page < 5) {
-      pagesLimit = data.totalPages - this.page;
-    }
-    if (data.last) {
-      pagesLimit = this.page + 1;
-    }
-    let x = (data.first ? 0 : this.page - 1);
-    for (x; x < pagesLimit; ++x) {
-      this.pages.push(x);
+    let after = 0;
+    if (this.page > 0) {
+      if (data.totalPages - this.page > 1) {
+        after = this.page + 1;
+      }
+      if ( after === 0 ) {
+        if ( this.page >= 2 ) {
+          this.pages.push(new OfferPageButton( this.page - 2 ));
+        }
+      }
+      if (this.page >= 1) {
+        this.pages.push(new OfferPageButton( this.page - 1 ));
+      }
+      this.pages.push(new OfferPageButton( this.page ));
+      if (after !== 0) {
+        this.pages.push(new OfferPageButton( after ));
+      }
+    } else {
+      this.pages.push(new OfferPageButton(0));
+      if (data.totalPages > 2) {
+        after = 2;
+      } else if (data.totalPages === 2) {
+        after = 1;
+      } else {
+        this.pageNavigationEnabled = false;
+      }
+      for (let i = 0; i < after ; i++) {
+        this.pages.push(new OfferPageButton(i + 1));
+      }
     }
     this.totalPagesCount = data.totalPages;
   }
@@ -66,7 +90,6 @@ export class MyOffersComponent implements OnInit {
   selectPage(i: number) {
     this.pageHighlightStatus = [];
     this.pageHighlightStatus[i] = true;
-    console.log(this.pageHighlightStatus);
     this.getOffersPaged(i, this.pageSize);
   }
 

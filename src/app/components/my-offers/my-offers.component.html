@@ -11,15 +11,16 @@
           <option>2</option>
           <option selected>5</option>
           <option>10</option>
+          <option>20</option>
         </select>
       </div>
-      <nav aria-label="Page navigation example">
+      <nav *ngIf="pageNavigationEnabled" aria-label="Page navigation">
         <ul class="pagination">
           <li class="page-item" [class.disabled] = "page - 1 < 0" (click)="previous()"><a class="page-link">Previous</a></li>
           <li class="page-item" [attr.data-selected]="false"
-              *ngFor="let page of pages; index as i" [class.active]="pageHighlightStatus[i]">
-            <a class="page-link" (click)="selectPage(i)">
-              {{page + 1}}
+              *ngFor="let page of pages; index as i" [class.active]="pageHighlightStatus[page.pageNumber]">
+            <a class="page-link" (click)="selectPage(page.pageNumber)">
+              {{page.pageNumber + 1}}
             </a>
           </li>
           <li class="page-item" [class.disabled] = "page >= totalPagesCount - 1" (click)="next()" ><a class="page-link">Next</a></li>
