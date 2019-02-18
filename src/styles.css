@@ -45,3 +45,10 @@ body {
   outline: none !important;
   box-shadow: 0 0 7px #06ff36;
 }
+
+ng2-message-popup button {
+  background-color: #7c664a;
+  color: beige;
+  margin-bottom: 10px;
+  border-radius: .25rem;
+}

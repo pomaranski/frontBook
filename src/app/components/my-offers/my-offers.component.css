@@ -1,3 +1,8 @@
 .offers-container {
   background: beige;
 }
+
+button {
+  background-color: #7c664a;
+  color: beige;
+}

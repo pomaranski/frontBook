@@ -48,7 +48,7 @@
         <td>{{offer.createdAt}}</td>
         <td>{{(offer.expires? offer.expires : 'Never')}}</td>
         <td>
-          <button (click)="onDelete(offer.id)">Delete</button>
+          <button (click)="onDelete(offer.id)" class="btn">Delete</button>
         </td>
       </tr>
       </tbody>
