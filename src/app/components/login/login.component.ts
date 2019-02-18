@@ -4,6 +4,7 @@ import {AuthService} from '../../services/auth.service';
 import {AppError} from '../../errors/appError';
 import {Router} from '@angular/router';
 import {TokenService} from '../../services/token.service';
+import {UnauthorizedError} from '../../errors/unauthorizedError';
 
 @Component({
   selector: 'app-login',
@@ -14,6 +15,7 @@ export class LoginComponent implements OnInit {
 
   clicked = false;
   failed = false;
+  message:  string;
 
   form = new FormGroup({
     login: new FormControl('',
@@ -53,6 +55,12 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['home']);
       },
       (error: AppError) => {
+        if (error instanceof UnauthorizedError) {
+          this.message = 'Wrong credentials';
+        } else {
+          this.message = 'Error';
+        }
+
         this.failed = true;
         setTimeout(() => {
           this.failed = false;
