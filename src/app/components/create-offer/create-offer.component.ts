@@ -14,11 +14,14 @@ export class CreateOfferComponent implements OnInit {
 
   form = new FormGroup({
     offerName: new FormControl('',
-      [Validators.maxLength(30)]),
+      [Validators.required,
+        Validators.maxLength(30)]),
     bookTitle: new FormControl('',
-      [Validators.maxLength(50)]),
+      [Validators.required,
+        Validators.maxLength(50)]),
     city: new FormControl('',
-      [Validators.maxLength(30)]),
+      [Validators.required,
+        Validators.maxLength(30)]),
     voivodeship: new FormControl('',
       [Validators.required,
         Validators.maxLength(30)]),
