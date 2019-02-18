@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {OfferService} from '../../services/offer.service';
 import {Offer} from '../../classes/offer';
 import {BehaviorSubject} from 'rxjs';
 import {Page} from '../../classes/Page';
 import {OfferPageButton} from '../../classes/OfferPageButton';
+import {Ng2MessagePopupComponent, Ng2PopupComponent} from 'ng2-popup';
 
 @Component({
   selector: 'app-my-offers',
@@ -22,10 +23,18 @@ export class MyOffersComponent implements OnInit {
 
   pageNavigationEnabled = true;
 
+  cannotDelete = false;
+
+  @ViewChild(Ng2PopupComponent) popup: Ng2PopupComponent;
+
+
   constructor(private offerService: OfferService) { }
 
   ngOnInit() {
-    console.log(this.pageSize);
+    this.refresh();
+  }
+
+  refresh() {
     this.getOffersPaged(this.page, this.pageSize);
     this.pageHighlightStatus[this.page] = true;
   }
@@ -108,5 +117,34 @@ export class MyOffersComponent implements OnInit {
   changePageSize(number: number, value: any) {
     this.pageSize = value;
     this.selectPage(number);
+  }
+
+  onDelete(id: number) {
+    this.popup.open(Ng2MessagePopupComponent, {
+      title: 'Warning',
+      message: 'Are you sure that you want to delete this offer?',
+      buttons: {
+        OK: () => {
+          this.popup.close();
+          this.offerService.delete(id).subscribe(
+            () => {
+              this.refresh();
+            },
+            () => {
+              this.cannotDelete = true;
+              setTimeout(() => {
+                this.cannotDelete = false;
+              }, 5000);
+            }
+          );
+        },
+        CANCEL: () => {
+          this.popup.close();
+        }
+      }
+    });
+
+
+
   }
 }

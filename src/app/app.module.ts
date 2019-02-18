@@ -23,6 +23,8 @@ import { OfferSearchComponent } from './components/offer-search/offer-search.com
 import { CreateOfferComponent } from './components/create-offer/create-offer.component';
 import { DescriptionBoxFieldComponent } from './components/form/description-box-field/description-box-field.component';
 import { MyOffersComponent } from './components/my-offers/my-offers.component';
+import {Ng2PopupModule} from 'ng2-popup';
+import {Ng2OverlayModule} from 'ng2-overlay';
 
 @NgModule({
   declarations: [
@@ -55,7 +57,9 @@ import { MyOffersComponent } from './components/my-offers/my-offers.component';
           return localStorage.getItem('access_token');
         }
       }
-    })
+    }),
+    Ng2OverlayModule,
+    Ng2PopupModule
   ],
   providers: [
     {

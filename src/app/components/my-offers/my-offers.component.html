@@ -1,5 +1,7 @@
 <app-navbar></app-navbar>
 
+<ng2-popup #popup></ng2-popup>
+
 <div class="container offers-container">
   <p class="display-4">Your offers:</p>
   <div id="offers-tab">
@@ -35,6 +37,7 @@
         <th scope="col">Book title</th>
         <th scope="col">Date of creation</th>
         <th scope="col">Expires</th>
+        <th scope="col">Delete</th>
       </tr>
       </thead>
       <tbody>
@@ -44,9 +47,15 @@
         <td>{{offer.bookTitle}}</td>
         <td>{{offer.createdAt}}</td>
         <td>{{(offer.expires? offer.expires : 'Never')}}</td>
+        <td>
+          <button (click)="onDelete(offer.id)">Delete</button>
+        </td>
       </tr>
       </tbody>
     </table>
   </div>
+</div>
+<div *ngIf="cannotDelete" class="container">
+  Cannot delete
 </div>
 <app-footer></app-footer>
