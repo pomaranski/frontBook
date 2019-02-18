@@ -15,4 +15,5 @@ export class Offer {
   voivodeship: string;
   url: string;
   category: Category;
+  description: string;
 }

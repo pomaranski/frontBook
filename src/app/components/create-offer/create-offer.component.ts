@@ -104,7 +104,7 @@ export class CreateOfferComponent implements OnInit {
     input.append('city', this.city.value);
     input.append('voivodeship', this.voivodeship.value);
     input.append('description', this.description.value);
-    if (this.file) {
+    if (this.file.value !== '') {
       input.append('file', this.file.value);
     }
 

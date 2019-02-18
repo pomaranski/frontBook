@@ -43,8 +43,8 @@ export class OfferService {
     return this.http.post<FormData>(this.URL + '/offers', formData);
   }
 
-  modify(offer: Offer) {
-    return this.http.put<Offer>(this.URL + '/offers/' + offer.id, offer);
+  modify(id: string, formData: FormData) {
+    return this.http.put<Offer>(this.URL + `/offers/${id}`, formData);
   }
 
   delete(id: number) {

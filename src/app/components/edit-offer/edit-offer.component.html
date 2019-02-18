@@ -1,1 +1,59 @@
-{{offer?.id}}
+<div id="create-offer-main">
+  <div class="container">
+    <div class="card card-container">
+      <span class="form-font-header align-self-center" aria-hidden="true">J</span>
+      <form [formGroup]="form" (ngSubmit)="submit()">
+        <div class="form-group mb-5">
+          <app-required-text-field formControlName="offerName" [name]="'Offer Name'"></app-required-text-field>
+          <div *ngIf="(offerName.touched || clicked) && offerName.invalid" class="alert alert-primary">
+            <div *ngIf="offerName.errors?.required">Name is required</div>
+            <div *ngIf="offerName.errors?.maxlength">Name should be maximum 30 characters</div>
+          </div>
+        </div>
+        <div class="form-group mb-5">
+          <app-required-text-field formControlName="bookTitle" [name]="'Book Name'"></app-required-text-field>
+          <div *ngIf="(bookTitle.touched || clicked) && bookTitle.invalid" class="alert alert-primary">
+            <div *ngIf="bookTitle.errors?.required">Book title is required</div>
+            <div *ngIf="bookTitle.errors?.maxlength">Book title should be maximum 50 characters</div>
+          </div>
+        </div>
+        <div class="form-group mb-5">
+          <app-required-text-field formControlName="city" [name]="'City'"></app-required-text-field>
+          <div *ngIf="(city.touched || clicked) && city.invalid" class="alert alert-primary">
+            <div *ngIf="city.errors?.required">City is required</div>
+            <div *ngIf="city.errors?.maxlength">City should be maximum 30 characters</div>
+          </div>
+        </div>
+        <div class="form-group mb-5">
+          <app-required-text-field formControlName="voivodeship" [name]="'Voivodeship'"></app-required-text-field>
+          <div *ngIf="(voivodeship.touched || clicked) && voivodeship.invalid" class="alert alert-primary">
+            <div *ngIf="voivodeship.errors?.required">Voivodeship is required</div>
+            <div *ngIf="voivodeship.errors?.maxlength">Voivodeship should be maximum 30 characters</div>
+          </div>
+        </div>
+        <div class="form-group mb-5">
+          <app-description-box-field formControlName="description" [name]="'Description'"></app-description-box-field>
+          <div *ngIf="(description.touched || clicked) && description.invalid" class="alert alert-primary">
+            <div *ngIf="description.errors?.required">Description is required</div>
+            <div *ngIf="description.errors?.maxlength">Description should be maximum 150 characters</div>
+          </div>
+        </div>
+        <div class="form-group mb-5">
+          <input name="file" type="file" (change)="onFileChange($event)"/>
+          <div class="image-div" *ngIf="image else noImage">
+            <img [src]="image" alt="" height="180px" width="180px" >
+          </div>
+          <ng-template #noImage>
+            <img id="blah" [src]="url || 'http://placehold.it/180'" alt="" height="180px" width="180px" />
+          </ng-template>
+        </div>
+        <button class="btn btn-block btn-secondary" type="submit">
+          <i class="fa fa-sign-in" aria-hidden="true"></i> Edit offer
+        </button>
+        <div *ngIf="failed" class="alert alert-primary">
+          Cannot move farther
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
