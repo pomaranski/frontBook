@@ -23,6 +23,7 @@ export class OfferService {
     this.offers.next(newData);
     return newData;
   }
+
   getAllByFilter(offer: Offer) {
     const newData =  this.http.post<Array<Offer>>(this.URL + '/offers/filter', offer);
     this.offers.next(newData);
@@ -48,5 +49,9 @@ export class OfferService {
 
   delete(id: number) {
     return this.http.delete(this.URL + `/offers/${id}`);
+  }
+
+  get(id: string) {
+    return this.http.get<Offer>(this.URL + `/offers/${id}`);
   }
 }

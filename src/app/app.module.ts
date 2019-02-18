@@ -25,6 +25,7 @@ import { DescriptionBoxFieldComponent } from './components/form/description-box-
 import { MyOffersComponent } from './components/my-offers/my-offers.component';
 import {Ng2PopupModule} from 'ng2-popup';
 import {Ng2OverlayModule} from 'ng2-overlay';
+import { EditOfferComponent } from './components/edit-offer/edit-offer.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import {Ng2OverlayModule} from 'ng2-overlay';
     CreateOfferComponent,
     DescriptionBoxFieldComponent,
     MyOffersComponent,
+    EditOfferComponent,
   ],
   imports: [
     BrowserModule,

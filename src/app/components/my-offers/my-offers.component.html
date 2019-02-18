@@ -1,6 +1,4 @@
-<app-navbar></app-navbar>
-
-<ng2-popup #popup></ng2-popup>
+<ng2-popup></ng2-popup>
 
 <div class="container offers-container">
   <p class="display-4">Your offers:</p>
@@ -38,6 +36,7 @@
         <th scope="col">Date of creation</th>
         <th scope="col">Expires</th>
         <th scope="col">Delete</th>
+        <th scope="col">Edit</th>
       </tr>
       </thead>
       <tbody>
@@ -50,6 +49,9 @@
         <td>
           <button (click)="onDelete(offer.id)" class="btn">Delete</button>
         </td>
+        <td>
+          <button class="btn" routerLink="/edit_offer/{{offer.id}}">Edit</button>
+        </td>
       </tr>
       </tbody>
     </table>
@@ -58,4 +60,3 @@
 <div *ngIf="cannotDelete" class="container">
   Cannot delete
 </div>
-<app-footer></app-footer>
