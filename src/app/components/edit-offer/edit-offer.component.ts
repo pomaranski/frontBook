@@ -154,6 +154,7 @@ export class EditOfferComponent implements OnInit {
     input.append('city', this.city.value);
     input.append('voivodeship', this.voivodeship.value);
     input.append('description', this.description.value);
+    input.append('createdAt', this.offer.createdAt);
     if (this.file.value !== '') {
       input.append('file', this.file.value);
     }
