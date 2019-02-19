@@ -33,7 +33,6 @@
         <th scope="col">#</th>
         <th scope="col">Name</th>
         <th scope="col">Book title</th>
-        <th scope="col">Date of creation</th>
         <th scope="col">Expires</th>
         <th scope="col">Delete</th>
         <th scope="col">Edit</th>
@@ -44,7 +43,6 @@
         <th scope="row">{{i + pageSize * page + 1}}</th>
         <td>{{offer.offerName}}</td>
         <td>{{offer.bookTitle}}</td>
-        <td>{{offer.createdAt}}</td>
         <td>{{(offer.expires? offer.expires : 'Never')}}</td>
         <td>
           <button (click)="onDelete(offer.id)" class="btn">Delete</button>

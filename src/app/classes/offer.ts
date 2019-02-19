@@ -8,7 +8,6 @@ export class Offer {
   bookPublisher: string;
   offerName: string;
   offerOwner: UserView;
-  createdAt: string;
   expires: string;
   active: boolean;
   city: string;
