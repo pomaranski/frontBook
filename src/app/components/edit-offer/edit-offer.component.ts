@@ -57,15 +57,17 @@ export class EditOfferComponent implements OnInit {
       }
     );
 
-    this.fileService.getFile(id).subscribe(value => {
-        this.createImageFromBlob(value);
-      },
-      (error: AppError) => {
-        if (error instanceof NotFoundError) {
-        } else {
-          throw error;
-        }
-      });
+    if (this.offer.fileId) {
+      this.fileService.getFile(id).subscribe(value => {
+          this.createImageFromBlob(value);
+        },
+        (error: AppError) => {
+          if (error instanceof NotFoundError) {
+          } else {
+            throw error;
+          }
+        });
+    }
   }
 
   createImageFromBlob(image: Blob) {

@@ -12,7 +12,7 @@ export class Offer {
   active: boolean;
   city: string;
   voivodeship: string;
-  url: string;
+  fileId: string;
   category: Category;
   description: string;
 }

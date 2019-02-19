@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {FileService} from '../../../services/file.service';
 import {AppError} from '../../../errors/appError';
 import {NotFoundError} from '../../../errors/notFoundError';
+import {Offer} from '../../../classes/offer';
 
 @Component({
   selector: 'app-offer-card-image',
@@ -10,7 +11,7 @@ import {NotFoundError} from '../../../errors/notFoundError';
 })
 export class OfferCardImageComponent implements OnInit {
 
-  @Input('offerId') offerId: string;
+  @Input('offer') offer: Offer;
 
   image: any;
 
@@ -18,15 +19,17 @@ export class OfferCardImageComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.fileService.getFile(this.offerId).subscribe(value => {
-        this.createImageFromBlob(value);
-      },
-      (error: AppError) => {
-        if (error instanceof NotFoundError) {
-        } else {
-          throw error;
-        }
-      });
+    if (this.offer.fileId) {
+      this.fileService.getFile(this.offer.id).subscribe(value => {
+          this.createImageFromBlob(value);
+        },
+        (error: AppError) => {
+          if (error instanceof NotFoundError) {
+          } else {
+            throw error;
+          }
+        });
+    }
   }
 
   createImageFromBlob(image: Blob) {
