@@ -5,6 +5,8 @@ import {BehaviorSubject} from 'rxjs';
 import {Page} from '../../classes/Page';
 import {OfferPageButton} from '../../classes/OfferPageButton';
 import {Ng2MessagePopupComponent, Ng2PopupComponent} from 'ng2-popup';
+import {PageEvent} from '@angular/material';
+import {MatPaginator} from '@angular/material/typings/esm5/paginator';
 
 @Component({
   selector: 'app-my-offers',
@@ -12,7 +14,7 @@ import {Ng2MessagePopupComponent, Ng2PopupComponent} from 'ng2-popup';
   styleUrls: ['./my-offers.component.css']
 })
 export class MyOffersComponent implements OnInit {
-
+  displayedColumns: string[] = ['position', 'name', 'bookTitle', 'expires', 'edit', 'delete'];
   myOffers: Array<Offer>;
   page = 0;
   pageSize = 5;
@@ -26,7 +28,8 @@ export class MyOffersComponent implements OnInit {
   cannotDelete = false;
 
   @ViewChild(Ng2PopupComponent) popup: Ng2PopupComponent;
-
+  pageSizeOptions: number[] = [2, 5, 10, 20];
+  pageEvent: PageEvent;
 
   constructor(private offerService: OfferService) { }
 

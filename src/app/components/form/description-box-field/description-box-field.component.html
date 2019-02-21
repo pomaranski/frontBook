@@ -1,5 +1,6 @@
-<label class="font-weight-normal" for="{{name}}">{{name}}</label>
-<textarea id="{{name}}" [(ngModel)]="value" (ngModelChange)="updateChanges()"
-       (blur)="onBlur()" class="form-control-custom" [required]="value"
-        rows="4">
-</textarea>
+<mat-form-field>
+  <textarea matInput id="{{name}}" placeholder="{{name}}" [(ngModel)]="value" (ngModelChange)="updateChanges()"
+            (blur)="onBlur()" [required]="value"
+            rows="4">
+  </textarea>
+</mat-form-field>

@@ -3,57 +3,52 @@
 <div class="container offers-container">
   <p class="display-4">Your offers:</p>
   <div id="offers-tab">
-    <form>
-      <div class="form-group">
-        <label for="exampleFormControlSelect1">Offers per page</label>
-        <select name="pageSizeSelect" class="form-control" id="exampleFormControlSelect1"
-        (change)="changePageSize(0, $event.target.value)">
-          <option>2</option>
-          <option selected>5</option>
-          <option>10</option>
-          <option>20</option>
-        </select>
-      </div>
-      <nav *ngIf="pageNavigationEnabled" aria-label="Page navigation">
-        <ul class="pagination">
-          <li class="page-item" [class.disabled] = "page - 1 < 0" (click)="previous()"><a class="page-link">Previous</a></li>
-          <li class="page-item" [attr.data-selected]="false"
-              *ngFor="let page of pages; index as i" [class.active]="pageHighlightStatus[page.pageNumber]">
-            <a class="page-link" (click)="selectPage(page.pageNumber)">
-              {{page.pageNumber + 1}}
-            </a>
-          </li>
-          <li class="page-item" [class.disabled] = "page >= totalPagesCount - 1" (click)="next()" ><a class="page-link">Next</a></li>
-        </ul>
-      </nav>
-    </form>
-    <table class="table">
-      <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Name</th>
-        <th scope="col">Book title</th>
-        <th scope="col">Date of creation</th>
-        <th scope="col">Expires</th>
-        <th scope="col">Delete</th>
-        <th scope="col">Edit</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let offer of myOffers; index as i">
-        <th scope="row">{{i + pageSize * page + 1}}</th>
-        <td>{{offer.offerName}}</td>
-        <td>{{offer.bookTitle}}</td>
-        <td>{{offer.createdAt}}</td>
-        <td>{{(offer.expires? offer.expires : 'Never')}}</td>
-        <td>
-          <button (click)="onDelete(offer.id)" class="btn">Delete</button>
-        </td>
-        <td>
-          <button class="btn" routerLink="/edit_offer/{{offer.id}}">Edit</button>
-        </td>
-      </tr>
-      </tbody>
+    <mat-paginator [length]="totalPagesCount * pageSize"
+                   [pageSize]="pageSize"
+                   [pageSizeOptions]="pageSizeOptions"
+                   (page)="changePageSize($event.pageIndex, $event.pageSize )"
+                      >
+    </mat-paginator>
+
+    <table class="mat-elevation-z0" mat-table [dataSource]="myOffers">
+
+      <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef> No. </th>
+        <td mat-cell *matCellDef="let element; index as i"> {{i}} </td>
+      </ng-container>
+
+       <ng-container matColumnDef="name">
+         <th mat-header-cell *matHeaderCellDef> Name </th>
+         <td mat-cell *matCellDef="let element"> {{element.offerName}} </td>
+       </ng-container>
+
+       <ng-container matColumnDef="bookTitle">
+         <th mat-header-cell *matHeaderCellDef> Book title </th>
+         <td mat-cell *matCellDef="let element"> {{element.bookTitle}} </td>
+       </ng-container>
+
+       <ng-container matColumnDef="expires">
+         <th mat-header-cell *matHeaderCellDef> Expires </th>
+         <td mat-cell *matCellDef="let element"> {{element.expires}} </td>
+       </ng-container>
+
+       <ng-container matColumnDef="edit">
+         <th mat-header-cell *matHeaderCellDef> Edit </th>
+         <td mat-cell *matCellDef="let element">
+           <button mat-flat-button routerLink="/edit_offer/{{element.id}}">Edit</button>
+         </td>
+       </ng-container>
+
+       <ng-container matColumnDef="delete">
+         <th mat-header-cell *matHeaderCellDef> Delete </th>
+         <td mat-cell *matCellDef="let element">
+           <button mat-flat-button (click)="onDelete(element.id)">Delete</button>
+         </td>
+       </ng-container>
+
+       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
     </table>
   </div>
 </div>

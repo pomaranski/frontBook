@@ -26,6 +26,13 @@ import { MyOffersComponent } from './components/my-offers/my-offers.component';
 import {Ng2PopupModule} from 'ng2-popup';
 import {Ng2OverlayModule} from 'ng2-overlay';
 import { EditOfferComponent } from './components/edit-offer/edit-offer.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {
+  MatTableModule, MatPaginatorModule, MatSortModule, MatToolbarModule,
+  MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatInputModule
+} from '@angular/material';
+import { MaterialDesignNavbarComponent } from './components/material-design-navbar/material-design-navbar.component';
+import { LayoutModule } from '@angular/cdk/layout';
 
 @NgModule({
   declarations: [
@@ -46,6 +53,7 @@ import { EditOfferComponent } from './components/edit-offer/edit-offer.component
     DescriptionBoxFieldComponent,
     MyOffersComponent,
     EditOfferComponent,
+    MaterialDesignNavbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,7 +69,18 @@ import { EditOfferComponent } from './components/edit-offer/edit-offer.component
       }
     }),
     Ng2OverlayModule,
-    Ng2PopupModule
+    Ng2PopupModule,
+    BrowserAnimationsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
+    MatInputModule
   ],
   providers: [
     {
@@ -73,7 +92,10 @@ import { EditOfferComponent } from './components/edit-offer/edit-offer.component
       useClass: TokenInterceptor,
       multi: true
     }],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [
+    MatInputModule
+  ]
 })
 export class AppModule {
 }

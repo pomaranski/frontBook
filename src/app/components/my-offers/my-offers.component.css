@@ -6,3 +6,7 @@ button {
   background-color: #7c664a;
   color: beige;
 }
+
+table {
+  width: 100%;
+}

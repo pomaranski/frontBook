@@ -1,3 +1,5 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
 html {
   height: 100%;
 }
@@ -52,3 +54,6 @@ ng2-message-popup button {
   margin-bottom: 10px;
   border-radius: .25rem;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -1,3 +1,5 @@
-<label class="font-weight-normal" for="{{name}}">{{name}}</label>
-<input id="{{name}}" type="text" [(ngModel)]="value" (ngModelChange)="updateChanges()"
-       (blur)="onBlur()" class="form-control-custom" [required]="value">
+<mat-form-field>
+  <!--<label class="font-weight-normal" for="{{name}}">{{name}}</label>-->
+  <input matInput id="{{name}}" type="text" [(ngModel)]="value" placeholder="{{name}}" (ngModelChange)="updateChanges()"
+         (blur)="onBlur()" class="required-text-input" [required]="value">
+</mat-form-field>
