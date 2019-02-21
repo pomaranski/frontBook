@@ -3,6 +3,8 @@ import {Offer} from '../../classes/offer';
 import {OfferService} from '../../services/offer.service';
 import {FilterBindingClass} from '../../classes/FilterBindingClass';
 import {ActivatedRoute, Router, RoutesRecognized} from '@angular/router';
+import {OfferDataModule} from '../../modules/offer-data/offer-data.module';
+import {Page} from '../../classes/Page';
 
 @Component({
   selector: 'app-offer-search',
@@ -19,7 +21,8 @@ export class OfferSearchComponent implements OnInit {
 
   constructor(private offerService: OfferService,
               private activatedRoute: ActivatedRoute,
-              private router: Router) { }
+              private router: Router,
+              public dataModule: OfferDataModule) { }
 
   ngOnInit() {
     this.activatedRoute.queryParamMap.subscribe( params => {
@@ -56,8 +59,17 @@ export class OfferSearchComponent implements OnInit {
 
     this.assignFilters(offer);
 
-    console.log(offer);
-    this.offerService.getAllByFilter(offer);
+    this.dataModule.filterOffer = offer;
+    this.offerService.getAllByFilterPaged(offer,
+      this.dataModule.pageIndex.toString(),
+      this.dataModule.pageSize.toString())
+      .toPromise()
+      .then( (page: Page) => {
+        this.dataModule.totalPages = page.totalPages;
+        this.dataModule.pageIndex = page.number;
+        this.dataModule.offers = page.content;
+        this.dataModule.totalElements = page.totalElements;
+      });
   }
 
 

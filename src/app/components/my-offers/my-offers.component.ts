@@ -18,6 +18,7 @@ export class MyOffersComponent implements OnInit {
   myOffers: Array<Offer>;
   page = 0;
   pageSize = 5;
+  totalElements = 0;
   pages = new Array<OfferPageButton>();
 
   pageHighlightStatus = new Array<boolean>();
@@ -29,7 +30,6 @@ export class MyOffersComponent implements OnInit {
 
   @ViewChild(Ng2PopupComponent) popup: Ng2PopupComponent;
   pageSizeOptions: number[] = [2, 5, 10, 20];
-  pageEvent: PageEvent;
 
   constructor(private offerService: OfferService) { }
 
@@ -57,6 +57,7 @@ export class MyOffersComponent implements OnInit {
       .toPromise().then((data) => {
         this.myOffers = data.content;
         this.page = data.number;
+        this.totalElements = data.totalElements;
         this.totalPages(data);
         console.log(data);
       });

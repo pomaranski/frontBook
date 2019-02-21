@@ -1,9 +1,7 @@
-import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {Offer} from '../classes/offer';
-import {Observable, Subject} from 'rxjs';
-import {ContentType} from '@angular/http/src/enums';
 import {Page} from '../classes/Page';
 
 @Injectable({
@@ -11,23 +9,21 @@ import {Page} from '../classes/Page';
 })
 export class OfferService {
 
-  private offers = new Subject<Observable<Array<Offer>>>();
-  offers$ = this.offers.asObservable();
-
   private readonly URL = environment.apiUrl;
 
   constructor(private http: HttpClient) { }
 
   getAll() {
-    const newData = this.http.get<Array<Offer>>(this.URL + '/offers');
-    this.offers.next(newData);
-    return newData;
+    return this.http.get<Array<Offer>>(this.URL + '/offers');
   }
 
   getAllByFilter(offer: Offer) {
-    const newData =  this.http.post<Array<Offer>>(this.URL + '/offers/filter', offer);
-    this.offers.next(newData);
-    return newData;
+    return this.http.post<Array<Offer>>(this.URL + '/offers/filter', offer);
+  }
+
+  getAllByFilterPaged(offer: Offer, page: string, pageSize: string) {
+    const param = {page: page, limit: pageSize};
+    return this.http.post<Page>(this.URL + '/offers/filter/p', offer, {params: param} );
   }
 
   getShortForMe() {

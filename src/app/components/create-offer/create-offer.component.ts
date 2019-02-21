@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {PasswordMatchValidator} from '../../validators/passwordMatchValidator';
 import {OfferService} from '../../services/offer.service';
@@ -30,6 +30,9 @@ export class CreateOfferComponent implements OnInit {
         Validators.maxLength(150)]),
     file: new FormControl('')
   });
+
+  @ViewChild('fileInput') fileInput: ElementRef;
+
   clicked = false;
   failed = false;
 
@@ -114,4 +117,7 @@ export class CreateOfferComponent implements OnInit {
     return input;
   }
 
+  chooseFile() {
+    this.fileInput.nativeElement.click();
+  }
 }

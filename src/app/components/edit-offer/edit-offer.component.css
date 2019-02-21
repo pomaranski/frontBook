@@ -7,3 +7,25 @@ input {
   margin-bottom: 25px !important;
 }
 
+
+#input-file-hidden {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.choose-file-group {
+}
+
+.choose-file-label {
+  margin-right: 20%;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.submit-button {
+  width: 100%;
+}

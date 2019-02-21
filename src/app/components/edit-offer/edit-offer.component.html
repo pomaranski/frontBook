@@ -38,17 +38,20 @@
             <div *ngIf="description.errors?.maxlength">Description should be maximum 150 characters</div>
           </div>
         </div>
-        <div class="form-group mb-5">
-          <input name="file" type="file" (change)="onFileChange($event)"/>
+        <div class="form-group mb-5 choose-file-group">
+          <label class="choose-file-label" for="input-file-hidden">
+            <div type="button" class="mat-raised-button" (click)="chooseFile()"> Choose file...</div>
+          </label>
+          <input name="file" type="file" id="input-file-hidden" (change)="onFileChange($event)"/>
           <div class="image-div" *ngIf="image else noImage">
-            <img [src]="image" alt="" height="180px" width="180px" >
+            <img id="blah" [src]="image " alt="" height="320px" width="320px" />
           </div>
           <ng-template #noImage>
-            <img id="blah" [src]="url || 'http://placehold.it/180'" alt="" height="180px" width="180px" />
+            <img [src]="'http://placehold.it/180'" alt="" height="180px" width="180px" />
           </ng-template>
         </div>
-        <button class="btn btn-block btn-secondary" type="submit">
-          <i class="fa fa-sign-in" aria-hidden="true"></i> Edit offer
+        <button mat-raised-button type="submit" class="submit-button">
+          <i class="fa fa-sign-in" aria-hidden="true"></i> Save offer
         </button>
         <div *ngIf="failed" class="alert alert-primary">
           Cannot move farther

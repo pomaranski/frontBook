@@ -3,7 +3,7 @@
 <div class="container offers-container">
   <p class="display-4">Your offers:</p>
   <div id="offers-tab">
-    <mat-paginator [length]="totalPagesCount * pageSize"
+    <mat-paginator [length]="totalElements"
                    [pageSize]="pageSize"
                    [pageSizeOptions]="pageSizeOptions"
                    (page)="changePageSize($event.pageIndex, $event.pageSize )"

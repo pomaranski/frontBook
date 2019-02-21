@@ -1,6 +1,14 @@
 <div id="home-body">
+
   <app-offer-search></app-offer-search>
+
   <div *ngIf="areOffersPopulated(); else noOffersTemp" id="home-offers-container" class="container">
+    <mat-paginator [length]="dataModule.totalElements"
+                   [pageSize]="dataModule.pageSize"
+                   [pageSizeOptions]="dataModule.pageSizeOptions"
+                   (page)="changePage($event.pageIndex, $event.pageSize )"
+    >
+    </mat-paginator>
     <app-offer-card *ngFor="let offer of offers" [offer]="offer"></app-offer-card>
   </div>
   <ng-template #noOffersTemp>

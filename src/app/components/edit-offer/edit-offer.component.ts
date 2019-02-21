@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {OfferService} from '../../services/offer.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Offer} from '../../classes/offer';
@@ -43,6 +43,9 @@ export class EditOfferComponent implements OnInit {
   image: any;
 
   offer: Offer;
+
+
+  @ViewChild('fileInput') fileInput: ElementRef;
 
   constructor(private route: ActivatedRoute, private offerService: OfferService, private fileService: FileService,
               private router: Router) {
@@ -161,6 +164,10 @@ export class EditOfferComponent implements OnInit {
     }
 
     return input;
+  }
+
+  chooseFile() {
+    this.fileInput.nativeElement.click();
   }
 
 }

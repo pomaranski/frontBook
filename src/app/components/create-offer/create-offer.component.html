@@ -38,11 +38,14 @@
             <div *ngIf="description.errors?.maxlength">Description should be maximum 150 characters</div>
           </div>
         </div>
-        <div class="form-group mb-5">
-          <input name="file" type="file" (change)="onFileChange($event)"/>
-          <img id="blah" [src]="url || 'http://placehold.it/180'" alt="" height="180px" width="180px" />
+        <div class="form-group mb-5 choose-file-group">
+          <label class="choose-file-label" for="input-file-hidden">
+            <div type="button" class="mat-raised-button" (click)="chooseFile()"> Choose file...</div>
+          </label>
+          <input name="file" type="file" id="input-file-hidden" (change)="onFileChange($event)"/>
+          <img id="blah" [src]="url || 'http://placehold.it/320'" alt="" height="320px" width="320px" />
         </div>
-        <button class="btn btn-block btn-secondary" type="submit">
+        <button mat-raised-button type="submit" class="submit-button">
           <i class="fa fa-sign-in" aria-hidden="true"></i> Add offer
         </button>
         <div *ngIf="failed" class="alert alert-primary">
