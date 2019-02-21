@@ -57,15 +57,17 @@ export class EditOfferComponent implements OnInit {
       }
     );
 
-    this.fileService.getFile(id).subscribe(value => {
-        this.createImageFromBlob(value);
-      },
-      (error: AppError) => {
-        if (error instanceof NotFoundError) {
-        } else {
-          throw error;
-        }
-      });
+    if (this.offer.fileId) {
+      this.fileService.getFile(id).subscribe(value => {
+          this.createImageFromBlob(value);
+        },
+        (error: AppError) => {
+          if (error instanceof NotFoundError) {
+          } else {
+            throw error;
+          }
+        });
+    }
   }
 
   createImageFromBlob(image: Blob) {
@@ -154,7 +156,6 @@ export class EditOfferComponent implements OnInit {
     input.append('city', this.city.value);
     input.append('voivodeship', this.voivodeship.value);
     input.append('description', this.description.value);
-    input.append('createdAt', this.offer.createdAt);
     if (this.file.value !== '') {
       input.append('file', this.file.value);
     }
