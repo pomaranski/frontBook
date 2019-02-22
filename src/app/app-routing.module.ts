@@ -12,6 +12,7 @@ import {MyOffersComponent} from './components/my-offers/my-offers.component';
 import {EditOfferComponent} from './components/edit-offer/edit-offer.component';
 import {OfferAddedComponent} from './components/create-offer/offer-added/offer-added.component';
 import {OfferDetailsComponent} from './components/offer-details/offer-details.component';
+import {ConfirmMailComponent} from './components/confirm-mail/confirm-mail.component';
 
 const routes: Routes = [
   {path: '', component: StartComponent},
@@ -39,6 +40,7 @@ const routes: Routes = [
   },
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
+  {path: 'confirm_mail', component: ConfirmMailComponent},
   {path: '**', redirectTo: '', pathMatch: 'full'}
 ];
 

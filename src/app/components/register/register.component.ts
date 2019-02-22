@@ -5,6 +5,7 @@ import {AppError} from '../../errors/appError';
 import {RegisterService} from '../../services/register.service';
 import {User} from '../../classes/user';
 import {Router} from '@angular/router';
+import {UserError} from '../../classes/error';
 
 @Component({
   selector: 'app-register',
@@ -15,6 +16,7 @@ export class RegisterComponent implements OnInit {
 
   clicked = false;
   failed = false;
+  errorMessage: string;
 
   form = new FormGroup({
     name: new FormControl('',
@@ -75,10 +77,12 @@ export class RegisterComponent implements OnInit {
 
     this.registerService.register(user).subscribe(
       () => {
-        this.router.navigate(['login']);
+        localStorage.setItem('email', user.email);
+        this.router.navigate(['confirm_mail']);
       },
       (error: AppError) => {
         this.failed = true;
+        this.errorMessage = error.error;
         setTimeout(() => {
           this.failed = false;
         }, 5000);
