@@ -17,7 +17,6 @@ export class AuthService {
   login(login: string, password: string) {
     return this.http.post<any>(this.URL + '/auth', {login, password}).pipe(
       map((response) => {
-        console.log(response);
         const token = response.token;
         this.setToken(token);
       }));

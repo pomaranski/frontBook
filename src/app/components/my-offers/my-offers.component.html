@@ -1,5 +1,5 @@
-<div class="container offers-container">
-  <p class="display-4">Your offers:</p>
+<div class="container h-100">
+  <p class="display-4 mat-app-background p-lg-3">Your offers:</p>
   <div id="offers-tab">
     <mat-paginator [length]="totalElements"
                    [pageSize]="pageSize"
@@ -41,6 +41,13 @@
          <th mat-header-cell *matHeaderCellDef> Delete </th>
          <td mat-cell *matCellDef="let element">
            <button mat-flat-button (click)="onDelete(element.id, element.offerName)">Delete</button>
+         </td>
+       </ng-container>
+
+      <ng-container matColumnDef="details">
+         <th mat-header-cell *matHeaderCellDef> Details </th>
+         <td mat-cell *matCellDef="let element">
+           <button mat-flat-button routerLink="/offer_details/{{element.id}}">Show details</button>
          </td>
        </ng-container>
 

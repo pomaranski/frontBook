@@ -12,7 +12,7 @@ import {DeleteOfferDialogComponent} from './delete-offer-dialog/delete-offer-dia
   styleUrls: ['./my-offers.component.css']
 })
 export class MyOffersComponent implements OnInit {
-  displayedColumns: string[] = ['position', 'name', 'bookTitle', 'expires', 'edit', 'delete'];
+  displayedColumns: string[] = ['position', 'name', 'bookTitle', 'expires', 'edit', 'delete', 'details'];
   myOffers: Array<Offer>;
   page = 0;
   pageSize = 5;

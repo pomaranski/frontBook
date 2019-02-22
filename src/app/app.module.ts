@@ -34,6 +34,8 @@ import {
 import { MaterialDesignNavbarComponent } from './components/material-design-navbar/material-design-navbar.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { DeleteOfferDialogComponent } from './components/my-offers/delete-offer-dialog/delete-offer-dialog.component';
+import { OfferAddedComponent } from './components/create-offer/offer-added/offer-added.component';
+import { OfferDetailsComponent } from './components/offer-details/offer-details.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +58,8 @@ import { DeleteOfferDialogComponent } from './components/my-offers/delete-offer-
     EditOfferComponent,
     MaterialDesignNavbarComponent,
     DeleteOfferDialogComponent,
+    OfferAddedComponent,
+    OfferDetailsComponent,
   ],
   imports: [
     BrowserModule,

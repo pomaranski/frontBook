@@ -1,0 +1,66 @@
+<div class="single-offer h-100 mat-app-background">
+  <div class="card card-container">
+    <div class="card-header">
+      <span class="decor-font ">B</span>
+      <span class="ofcard-header" >{{offer.offerName}}</span>
+    </div>
+    <div class="ofcontent">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="ofimage-div">
+            <app-offer-card-image [offer]="offer"></app-offer-card-image>
+          </div>
+        </div>
+        <div class="col-5">
+          <table class="table ofdata">
+            <tr>
+              <th>Book title:</th>
+              <td>{{offer.bookTitle}}</td>
+            </tr>
+            <tr>
+              <th>City: </th>
+              <td>{{offer.city}}</td>
+            </tr>
+            <tr>
+              <th>Voivodeship: </th>
+              <td>{{offer.voivodeship}}</td>
+            </tr>
+            <tr>
+              <th>Category: </th>
+              <td>{{offer.category?.name}}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-10">
+        <table class="table ofdata">
+          <tr>
+            <th>Description:</th>
+            <td>{{offer.description}}</td>
+          </tr>
+          <tr>
+            <th>Expires: </th>
+            <td>{{offer.expires}}</td>
+          </tr>
+          <tr>
+            <th>Book publisher: </th>
+            <td>{{offer.bookPublisher}}</td>
+          </tr>
+          <tr>
+            <th>Release year: </th>
+            <td>{{offer.bookReleaseYear}}</td>
+          </tr>
+          <tr>
+            <th>Posted by: </th>
+            <td>{{offer.offerOwner?.name}} {{offer.offerOwner?.lastName}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="row">
+      <button mat-raised-button class="w-100">Book the offer!</button>
+    </div>
+  </div>
+</div>
