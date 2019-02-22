@@ -2,14 +2,14 @@
   <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="!(isHandset$ | async)">
+      [opened]="false">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item routerLink="/home" routerLinkActive="active">Home</a>
+      <a mat-list-item routerLink="/home" (click)="drawer.toggle()" routerLinkActive="active">Home</a>
       <mat-divider></mat-divider>
-      <a mat-list-item routerLink="/new_offer" routerLinkActive="active">New offer</a>
+      <a mat-list-item routerLink="/new_offer" (click)="drawer.toggle()" routerLinkActive="active">New offer</a>
       <mat-divider></mat-divider>
-      <a mat-list-item routerLink="/my_offers" routerLinkActive="active">My offers</a>
+      <a mat-list-item routerLink="/my_offers" (click)="drawer.toggle()" routerLinkActive="active">My offers</a>
       <mat-divider></mat-divider>
       <a mat-list-item href="#" (click)="logout()">Logout</a>
     </mat-nav-list>
@@ -20,8 +20,7 @@
         type="button"
         aria-label="Toggle sidenav"
         mat-icon-button
-        (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async">
+        (click)="drawer.toggle()">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span>frontBook</span>
