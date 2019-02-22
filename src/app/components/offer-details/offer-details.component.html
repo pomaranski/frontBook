@@ -59,8 +59,14 @@
         </table>
       </div>
     </div>
+
     <div class="row">
-      <button mat-raised-button class="w-100">Book the offer!</button>
+      <div class="w-100" *ngIf="offer.offerOwner?.id !== tokenService.decodeToken().userID; else editOfferButton">
+        <button mat-raised-button class="w-100">Book the offer!</button>
+      </div>
+      <ng-template #editOfferButton>
+        <button mat-raised-button class="w-100" routerLink="/edit_offer/{{offer.id}}">Edit</button>
+      </ng-template>
     </div>
   </div>
 </div>

@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {OfferService} from '../../services/offer.service';
 import {FileService} from '../../services/file.service';
 import {Offer} from '../../classes/offer';
+import {TokenService} from '../../services/token.service';
 
 @Component({
   selector: 'app-offer-details',
@@ -16,7 +17,7 @@ export class OfferDetailsComponent implements OnInit {
   image: any;
 
   constructor(private route: ActivatedRoute, private offerService: OfferService, private fileService: FileService,
-              private router: Router) { }
+              private router: Router, protected tokenService: TokenService) { }
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');

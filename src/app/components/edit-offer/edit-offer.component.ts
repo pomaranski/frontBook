@@ -7,6 +7,7 @@ import {environment} from '../../../environments/environment';
 import {FileService} from '../../services/file.service';
 import {AppError} from '../../errors/appError';
 import {NotFoundError} from '../../errors/notFoundError';
+import {TokenService} from '../../services/token.service';
 
 @Component({
   selector: 'app-edit-offer',
@@ -48,7 +49,7 @@ export class EditOfferComponent implements OnInit {
   @ViewChild('fileInput') fileInput: ElementRef;
 
   constructor(private route: ActivatedRoute, private offerService: OfferService, private fileService: FileService,
-              private router: Router) {
+              private router: Router, protected tokenService: TokenService) {
   }
 
   ngOnInit() {
