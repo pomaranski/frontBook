@@ -19,16 +19,18 @@ export class OfferCardImageComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.offer.fileId) {
-      this.fileService.getFile(this.offer.id).subscribe(value => {
-          this.createImageFromBlob(value);
-        },
-        (error: AppError) => {
-          if (error instanceof NotFoundError) {
-          } else {
-            throw error;
-          }
-        });
+    if (this.offer) {
+      if (this.offer.fileId) {
+        this.fileService.getFile(this.offer.id).subscribe(value => {
+            this.createImageFromBlob(value);
+          },
+          (error: AppError) => {
+            if (error instanceof NotFoundError) {
+            } else {
+              throw error;
+            }
+          });
+      }
     }
   }
 

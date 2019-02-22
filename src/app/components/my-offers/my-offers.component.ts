@@ -40,8 +40,8 @@ export class MyOffersComponent implements OnInit {
        this.myOffers = data;
       },
      (error) => {
-      console.log(error);
-     }
+        console.log(error);
+      }
      );
   }
 
@@ -52,7 +52,9 @@ export class MyOffersComponent implements OnInit {
         this.page = data.number;
         this.totalElements = data.totalElements;
         this.totalPages(data);
-        console.log(data);
+      },
+      (reason) => {
+        console.log(reason);
       });
     this.pageSize = size;
   }
