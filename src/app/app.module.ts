@@ -29,10 +29,11 @@ import { EditOfferComponent } from './components/edit-offer/edit-offer.component
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MatTableModule, MatPaginatorModule, MatSortModule, MatToolbarModule,
-  MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatInputModule
+  MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatInputModule, MatDialogModule
 } from '@angular/material';
 import { MaterialDesignNavbarComponent } from './components/material-design-navbar/material-design-navbar.component';
 import { LayoutModule } from '@angular/cdk/layout';
+import { DeleteOfferDialogComponent } from './components/my-offers/delete-offer-dialog/delete-offer-dialog.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { LayoutModule } from '@angular/cdk/layout';
     MyOffersComponent,
     EditOfferComponent,
     MaterialDesignNavbarComponent,
+    DeleteOfferDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -80,7 +82,8 @@ import { LayoutModule } from '@angular/cdk/layout';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    MatInputModule
+    MatInputModule,
+    MatDialogModule
   ],
   providers: [
     {
@@ -94,7 +97,11 @@ import { LayoutModule } from '@angular/cdk/layout';
     }],
   bootstrap: [AppComponent],
   exports: [
-    MatInputModule
+    MatInputModule,
+    MatDialogModule
+  ],
+  entryComponents: [
+    DeleteOfferDialogComponent
   ]
 })
 export class AppModule {

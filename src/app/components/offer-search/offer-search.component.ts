@@ -30,14 +30,12 @@ export class OfferSearchComponent implements OnInit {
       this.fields[1] = params.get('title');
       this.fields[2] = params.get('city');
       this.fields[3] = params.get('voivodeship');
-      console.log(params.get('page'));
       if (params.get('page')) {
         this.dataModule.pageIndex = Number(params.get('page'));
       }
       if (params.get('size')) {
         this.dataModule.pageSize = Number(params.get('size'));
       }
-      console.log(this.dataModule);
       this.queryOffers();
     });
   }
@@ -139,5 +137,4 @@ export class OfferSearchComponent implements OnInit {
     this.fields[i] = '';
     this.offerSearch();
   }
-
 }

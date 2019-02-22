@@ -1,12 +1,10 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {OfferService} from '../../services/offer.service';
 import {Offer} from '../../classes/offer';
-import {BehaviorSubject} from 'rxjs';
 import {Page} from '../../classes/Page';
 import {OfferPageButton} from '../../classes/OfferPageButton';
-import {Ng2MessagePopupComponent, Ng2PopupComponent} from 'ng2-popup';
-import {PageEvent} from '@angular/material';
-import {MatPaginator} from '@angular/material/typings/esm5/paginator';
+import {MatDialog} from '@angular/material';
+import {DeleteOfferDialogComponent} from './delete-offer-dialog/delete-offer-dialog.component';
 
 @Component({
   selector: 'app-my-offers',
@@ -20,18 +18,13 @@ export class MyOffersComponent implements OnInit {
   pageSize = 5;
   totalElements = 0;
   pages = new Array<OfferPageButton>();
-
   pageHighlightStatus = new Array<boolean>();
   totalPagesCount: number;
-
   pageNavigationEnabled = true;
-
   cannotDelete = false;
-
-  @ViewChild(Ng2PopupComponent) popup: Ng2PopupComponent;
   pageSizeOptions: number[] = [2, 5, 10, 20];
 
-  constructor(private offerService: OfferService) { }
+  constructor(private offerService: OfferService, public dialog: MatDialog) { }
 
   ngOnInit() {
     this.refresh();
@@ -123,32 +116,26 @@ export class MyOffersComponent implements OnInit {
     this.selectPage(number);
   }
 
-  onDelete(id: number) {
-    this.popup.open(Ng2MessagePopupComponent, {
-      title: 'Warning',
-      message: 'Are you sure that you want to delete this offer?',
-      buttons: {
-        OK: () => {
-          this.popup.close();
-          this.offerService.delete(id).subscribe(
-            () => {
-              this.refresh();
-            },
-            () => {
-              this.cannotDelete = true;
-              setTimeout(() => {
-                this.cannotDelete = false;
-              }, 5000);
-            }
-          );
-        },
-        CANCEL: () => {
-          this.popup.close();
-        }
-      }
+  onDelete(id: number, name: string) {
+    const dialogRef = this.dialog.open(DeleteOfferDialogComponent, {
+      width: '250px',
+      data: {offerName: name}
     });
 
-
-
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.offerService.delete(id).subscribe(
+          () => {
+            this.refresh();
+          },
+          () => {
+            this.cannotDelete = true;
+            setTimeout(() => {
+              this.cannotDelete = false;
+            }, 5000);
+          }
+        );
+      }
+    });
   }
 }
