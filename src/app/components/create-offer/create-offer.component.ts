@@ -4,6 +4,7 @@ import {PasswordMatchValidator} from '../../validators/passwordMatchValidator';
 import {OfferService} from '../../services/offer.service';
 import {AppError} from '../../errors/appError';
 import {Route, Router} from '@angular/router';
+import {Offer} from '../../classes/offer';
 
 @Component({
   selector: 'app-create-offer',
@@ -89,8 +90,8 @@ export class CreateOfferComponent implements OnInit {
     const input = this.prepareForm();
 
     this.offerService.add(input).subscribe(
-      () => {
-        this.router.navigateByUrl('/offer_added');
+      (offer: Offer) => {
+        this.router.navigateByUrl('/offer_added/' + offer.id);
       },
       (error: AppError) => {
         console.log(error);

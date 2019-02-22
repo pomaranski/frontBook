@@ -2,61 +2,93 @@
   <div class="container">
     <div class="card card-container">
       <span class="form-font-header align-self-center" aria-hidden="true">J</span>
-      <form [formGroup]="form" (ngSubmit)="submit()">
-        <div class="form-group mb-5">
-          <app-required-text-field formControlName="offerName" [name]="'Offer Name'"></app-required-text-field>
-          <div *ngIf="(offerName.touched || clicked) && offerName.invalid" class="alert alert-primary">
-            <div *ngIf="offerName.errors?.required">Name is required</div>
-            <div *ngIf="offerName.errors?.maxlength">Name should be maximum 30 characters</div>
+      <mat-horizontal-stepper [linear]="true" #stepper>
+        <mat-step [stepControl]="form">
+          <ng-template matStepLabel>Basic data</ng-template>
+          <form [formGroup]="form">
+            <div class="form-group mb-5">
+              <app-required-text-field formControlName="offerName" [name]="'Offer Name'"></app-required-text-field>
+              <div *ngIf="(offerName.touched || clicked) && offerName.invalid" class="alert alert-primary">
+                <div *ngIf="offerName.errors?.required">Name is required</div>
+                <div *ngIf="offerName.errors?.maxlength">Name should be maximum 30 characters</div>
+              </div>
+            </div>
+            <div class="form-group mb-5">
+              <app-required-text-field formControlName="bookTitle" [name]="'Book Name'"></app-required-text-field>
+              <div *ngIf="(bookTitle.touched || clicked) && bookTitle.invalid" class="alert alert-primary">
+                <div *ngIf="bookTitle.errors?.required">Book title is required</div>
+                <div *ngIf="bookTitle.errors?.maxlength">Book title should be maximum 50 characters</div>
+              </div>
+            </div>
+            <div class="form-group mb-5">
+              <app-required-text-field formControlName="city" [name]="'City'"></app-required-text-field>
+              <div *ngIf="(city.touched || clicked) && city.invalid" class="alert alert-primary">
+                <div *ngIf="city.errors?.required">City is required</div>
+                <div *ngIf="city.errors?.maxlength">City should be maximum 30 characters</div>
+              </div>
+            </div>
+            <div class="form-group mb-5">
+              <app-required-text-field formControlName="voivodeship" [name]="'Voivodeship'"></app-required-text-field>
+              <div *ngIf="(voivodeship.touched || clicked) && voivodeship.invalid" class="alert alert-primary">
+                <div *ngIf="voivodeship.errors?.required">Voivodeship is required</div>
+                <div *ngIf="voivodeship.errors?.maxlength">Voivodeship should be maximum 30 characters</div>
+              </div>
+            </div>
+            <div class="form-group mb-5">
+              <app-description-box-field formControlName="description" [name]="'Description'"></app-description-box-field>
+              <div *ngIf="(description.touched || clicked) && description.invalid" class="alert alert-primary">
+                <div *ngIf="description.errors?.required">Description is required</div>
+                <div *ngIf="description.errors?.maxlength">Description should be maximum 150 characters</div>
+              </div>
+            </div>
+            <div>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+            <div *ngIf="failed" class="alert alert-primary">
+              Cannot move farther
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="form">
+          <ng-template matStepLabel>Details</ng-template>
+          <form [formGroup]="form">
+            <label class="text-monospace text-danger">TODO: details</label>
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+            <div *ngIf="failed" class="alert alert-primary">
+              Cannot move farther
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="form">
+          <ng-template matStepLabel>Picture</ng-template>
+          <form [formGroup]="form">
+            <div class="form-group mb-5 choose-file-group">
+              <label class="choose-file-label" for="input-file-hidden">
+                <div type="button" class="mat-raised-button" (click)="chooseFile()"> Choose file...</div>
+              </label>
+              <input name="file" type="file" id="input-file-hidden" (change)="onFileChange($event)"/>
+              <img id="blah" [src]="url || 'http://placehold.it/320'" alt="" height="320px" width="320px" />
+            </div>
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Done</ng-template>
+          Save the changes?
+          <div>
+            <form [formGroup]="form">
+              <button mat-button type="submit" (click)="submit()" class="submit-button">Save offer</button>
+            </form>
+            <button mat-button matStepperPrevious>Back</button>
           </div>
-        </div>
-        <div class="form-group mb-5">
-          <app-required-text-field formControlName="bookTitle" [name]="'Book Name'"></app-required-text-field>
-          <div *ngIf="(bookTitle.touched || clicked) && bookTitle.invalid" class="alert alert-primary">
-            <div *ngIf="bookTitle.errors?.required">Book title is required</div>
-            <div *ngIf="bookTitle.errors?.maxlength">Book title should be maximum 50 characters</div>
-          </div>
-        </div>
-        <div class="form-group mb-5">
-          <app-required-text-field formControlName="city" [name]="'City'"></app-required-text-field>
-          <div *ngIf="(city.touched || clicked) && city.invalid" class="alert alert-primary">
-            <div *ngIf="city.errors?.required">City is required</div>
-            <div *ngIf="city.errors?.maxlength">City should be maximum 30 characters</div>
-          </div>
-        </div>
-        <div class="form-group mb-5">
-          <app-required-text-field formControlName="voivodeship" [name]="'Voivodeship'"></app-required-text-field>
-          <div *ngIf="(voivodeship.touched || clicked) && voivodeship.invalid" class="alert alert-primary">
-            <div *ngIf="voivodeship.errors?.required">Voivodeship is required</div>
-            <div *ngIf="voivodeship.errors?.maxlength">Voivodeship should be maximum 30 characters</div>
-          </div>
-        </div>
-        <div class="form-group mb-5">
-          <app-description-box-field formControlName="description" [name]="'Description'"></app-description-box-field>
-          <div *ngIf="(description.touched || clicked) && description.invalid" class="alert alert-primary">
-            <div *ngIf="description.errors?.required">Description is required</div>
-            <div *ngIf="description.errors?.maxlength">Description should be maximum 150 characters</div>
-          </div>
-        </div>
-        <div class="form-group mb-5 choose-file-group">
-          <label class="choose-file-label" for="input-file-hidden">
-            <div type="button" class="mat-raised-button" (click)="chooseFile()"> Choose file...</div>
-          </label>
-          <input name="file" type="file" id="input-file-hidden" (change)="onFileChange($event)"/>
-          <div class="image-div" *ngIf="image else noImage">
-            <img id="blah" [src]="image " alt="" height="320px" width="320px" />
-          </div>
-          <ng-template #noImage>
-            <img [src]="'http://placehold.it/180'" alt="" height="180px" width="180px" />
-          </ng-template>
-        </div>
-        <button mat-raised-button type="submit" class="submit-button">
-          <i class="fa fa-sign-in" aria-hidden="true"></i> Save offer
-        </button>
-        <div *ngIf="failed" class="alert alert-primary">
-          Cannot move farther
-        </div>
-      </form>
+        </mat-step>
+      </mat-horizontal-stepper>
     </div>
   </div>
 </div>

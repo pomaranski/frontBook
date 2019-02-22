@@ -29,7 +29,7 @@ import { EditOfferComponent } from './components/edit-offer/edit-offer.component
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MatTableModule, MatPaginatorModule, MatSortModule, MatToolbarModule,
-  MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatInputModule, MatDialogModule
+  MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatInputModule, MatDialogModule, MatStepperModule
 } from '@angular/material';
 import { MaterialDesignNavbarComponent } from './components/material-design-navbar/material-design-navbar.component';
 import { LayoutModule } from '@angular/cdk/layout';
@@ -87,7 +87,8 @@ import { OfferDetailsComponent } from './components/offer-details/offer-details.
     MatIconModule,
     MatListModule,
     MatInputModule,
-    MatDialogModule
+    MatDialogModule,
+    MatStepperModule
   ],
   providers: [
     {
@@ -102,7 +103,8 @@ import { OfferDetailsComponent } from './components/offer-details/offer-details.
   bootstrap: [AppComponent],
   exports: [
     MatInputModule,
-    MatDialogModule
+    MatDialogModule,
+    MatStepperModule
   ],
   entryComponents: [
     DeleteOfferDialogComponent

@@ -33,7 +33,7 @@ const routes: Routes = [
       {path: 'my_offers', component: MyOffersComponent},
       {path: 'edit_offer/:id', component: EditOfferComponent},
       {path: 'offer_details/:id', component: OfferDetailsComponent},
-      {path: 'offer_added', component: OfferAddedComponent}
+      {path: 'offer_added/:id', component: OfferAddedComponent}
     ],
     canActivate: [AuthGuard]
   },
