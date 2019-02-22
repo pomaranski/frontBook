@@ -4,6 +4,7 @@ import {Offer} from '../../../classes/offer';
 import {OfferService} from '../../../services/offer.service';
 import {OfferDataModule} from '../../../modules/offer-data/offer-data.module';
 import {Page} from '../../../classes/Page';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +13,10 @@ import {Page} from '../../../classes/Page';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private offerService: OfferService, public dataModule: OfferDataModule) { }
+  constructor(private offerService: OfferService,
+              public dataModule: OfferDataModule,
+              private activatedRoute: ActivatedRoute,
+              private router: Router) { }
 
   offers: Array<Offer> = this.dataModule.offers;
 
@@ -34,6 +38,15 @@ export class HomeComponent implements OnInit {
   }
 
   changePage(pageIndex: number, pageSize: number) {
+    this.router.navigate([], {
+      relativeTo: this.activatedRoute,
+      queryParams: {
+        page: pageIndex,
+        size: pageSize
+      },
+      queryParamsHandling: 'merge',
+      skipLocationChange: false
+    });
     this.dataModule.pageSize = pageSize;
     this.dataModule.pageIndex = pageIndex;
     this.offerService.getAllByFilterPaged(

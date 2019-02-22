@@ -30,6 +30,14 @@ export class OfferSearchComponent implements OnInit {
       this.fields[1] = params.get('title');
       this.fields[2] = params.get('city');
       this.fields[3] = params.get('voivodeship');
+      console.log(params.get('page'));
+      if (params.get('page')) {
+        this.dataModule.pageIndex = Number(params.get('page'));
+      }
+      if (params.get('size')) {
+        this.dataModule.pageSize = Number(params.get('size'));
+      }
+      console.log(this.dataModule);
       this.queryOffers();
     });
   }
@@ -41,13 +49,14 @@ export class OfferSearchComponent implements OnInit {
         name: this.fields[0],
         title: this.fields[1],
         city: this.fields[2],
-        voivodeship: this.fields[3]
+        voivodeship: this.fields[3],
+        page: this.dataModule.pageIndex,
+        size: this.dataModule.pageSize
       },
       queryParamsHandling: 'merge',
       skipLocationChange: false
     });
   }
-
 
   queryOffers() {
     const offer = new Offer();
@@ -71,7 +80,6 @@ export class OfferSearchComponent implements OnInit {
         this.dataModule.totalElements = page.totalElements;
       });
   }
-
 
   toggleSearch() {
     if (this.isSearchOpened) {
