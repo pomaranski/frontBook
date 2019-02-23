@@ -58,7 +58,7 @@ export class LoginComponent implements OnInit {
         if (error instanceof UnauthorizedError) {
           this.message = 'Wrong credentials';
         } else {
-          this.message = 'Error';
+          this.message = 'Error\n' + error.error;
         }
 
         this.failed = true;

@@ -28,8 +28,19 @@ import {Ng2OverlayModule} from 'ng2-overlay';
 import { EditOfferComponent } from './components/edit-offer/edit-offer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
-  MatTableModule, MatPaginatorModule, MatSortModule, MatToolbarModule,
-  MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatInputModule, MatDialogModule, MatStepperModule, MatButtonToggleModule
+  MatTableModule,
+  MatPaginatorModule,
+  MatSortModule,
+  MatToolbarModule,
+  MatButtonModule,
+  MatSidenavModule,
+  MatIconModule,
+  MatListModule,
+  MatInputModule,
+  MatDialogModule,
+  MatStepperModule,
+  MatButtonToggleModule,
+  MatTabsModule
 } from '@angular/material';
 import { MaterialDesignNavbarComponent } from './components/material-design-navbar/material-design-navbar.component';
 import { LayoutModule } from '@angular/cdk/layout';
@@ -37,6 +48,7 @@ import { DeleteOfferDialogComponent } from './components/my-offers/delete-offer-
 import { OfferAddedComponent } from './components/create-offer/offer-added/offer-added.component';
 import { OfferDetailsComponent } from './components/offer-details/offer-details.component';
 import { ConfirmMailComponent } from './components/confirm-mail/confirm-mail.component';
+import { ManageOffersComponent } from './components/manage-offers/manage-offers.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +74,7 @@ import { ConfirmMailComponent } from './components/confirm-mail/confirm-mail.com
     OfferAddedComponent,
     OfferDetailsComponent,
     ConfirmMailComponent,
+    ManageOffersComponent,
   ],
   imports: [
     BrowserModule,
@@ -91,7 +104,8 @@ import { ConfirmMailComponent } from './components/confirm-mail/confirm-mail.com
     MatInputModule,
     MatDialogModule,
     MatStepperModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatTabsModule
   ],
   providers: [
     {
@@ -108,7 +122,8 @@ import { ConfirmMailComponent } from './components/confirm-mail/confirm-mail.com
     MatInputModule,
     MatDialogModule,
     MatStepperModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatTabsModule
   ],
   entryComponents: [
     DeleteOfferDialogComponent

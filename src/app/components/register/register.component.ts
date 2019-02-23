@@ -5,7 +5,6 @@ import {AppError} from '../../errors/appError';
 import {RegisterService} from '../../services/register.service';
 import {User} from '../../classes/user';
 import {Router} from '@angular/router';
-import {UserError} from '../../classes/error';
 
 @Component({
   selector: 'app-register',

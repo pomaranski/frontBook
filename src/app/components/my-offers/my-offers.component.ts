@@ -12,7 +12,7 @@ import {DeleteOfferDialogComponent} from './delete-offer-dialog/delete-offer-dia
   styleUrls: ['./my-offers.component.css']
 })
 export class MyOffersComponent implements OnInit {
-  displayedColumns: string[] = ['position', 'name', 'bookTitle', 'expires', 'edit', 'delete', 'details'];
+  displayedColumns: string[] = ['position', 'name' /*, 'bookTitle', 'expires', 'edit', 'delete', 'details'*/];
   myOffers: Array<Offer>;
   page = 0;
   pageSize = 5;
@@ -23,6 +23,7 @@ export class MyOffersComponent implements OnInit {
   pageNavigationEnabled = true;
   cannotDelete = false;
   pageSizeOptions: number[] = [2, 5, 10, 20];
+  details: boolean[] = [];
 
   constructor(private offerService: OfferService, public dialog: MatDialog) { }
 
@@ -139,5 +140,11 @@ export class MyOffersComponent implements OnInit {
         );
       }
     });
+  }
+
+  toggleDetails(i: number) {
+    const mem = this.details[i];
+    this.details = [];
+    this.details[i] = !mem;
   }
 }

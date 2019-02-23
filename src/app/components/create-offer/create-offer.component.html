@@ -67,7 +67,9 @@
           <form [formGroup]="form">
             <div class="form-group mb-5 choose-file-group">
               <label class="choose-file-label" for="input-file-hidden">
-                <div type="button" class="mat-raised-button" (click)="chooseFile()"> Choose file...</div>
+                <div type="button" class="mat-raised-button" (click)="chooseFile()">
+                  <mat-icon>cloud_upload</mat-icon> Choose file...
+                </div>
               </label>
               <input name="file" type="file" id="input-file-hidden" (change)="onFileChange($event)"/>
               <img id="blah" [src]="url || 'http://placehold.it/320'" alt="" height="320px" width="320px" />
@@ -83,7 +85,9 @@
           Submit the offer?
           <div>
             <form [formGroup]="form">
-              <button mat-button type="submit" (click)="submit()" class="submit-button" >Submit</button>
+              <button mat-button type="submit" (click)="submit()" class="submit-button" >Submit
+                <mat-icon>done_all</mat-icon>
+              </button>
             </form>
             <button mat-button matStepperPrevious>Back</button>
             <button mat-button (click)="stepper.reset()">Reset</button>

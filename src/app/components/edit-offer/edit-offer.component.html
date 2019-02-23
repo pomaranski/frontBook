@@ -84,7 +84,9 @@
             Save the changes?
             <div>
               <form [formGroup]="form">
-                <button mat-button type="submit" (click)="submit()" class="submit-button">Save offer</button>
+                <button mat-button type="submit" (click)="submit()" class="submit-button" >Submit
+                  <mat-icon>done_all</mat-icon>
+                </button>
               </form>
               <button mat-button matStepperPrevious>Back</button>
             </div>

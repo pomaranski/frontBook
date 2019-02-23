@@ -13,6 +13,7 @@ import {EditOfferComponent} from './components/edit-offer/edit-offer.component';
 import {OfferAddedComponent} from './components/create-offer/offer-added/offer-added.component';
 import {OfferDetailsComponent} from './components/offer-details/offer-details.component';
 import {ConfirmMailComponent} from './components/confirm-mail/confirm-mail.component';
+import {ManageOffersComponent} from './components/manage-offers/manage-offers.component';
 
 const routes: Routes = [
   {path: '', component: StartComponent},
@@ -30,8 +31,17 @@ const routes: Routes = [
           }
         ]
       },
+      {
+        path: 'manage_offers',
+        component: ManageOffersComponent,
+        children: [
+          {
+            path: 'my_offers',
+            component: MyOffersComponent
+          }
+        ]
+      },
       {path: 'new_offer', component: CreateOfferComponent},
-      {path: 'my_offers', component: MyOffersComponent},
       {path: 'edit_offer/:id', component: EditOfferComponent},
       {path: 'offer_details/:id', component: OfferDetailsComponent},
       {path: 'offer_added/:id', component: OfferAddedComponent}
