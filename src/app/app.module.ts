@@ -40,7 +40,7 @@ import {
   MatDialogModule,
   MatStepperModule,
   MatButtonToggleModule,
-  MatTabsModule
+  MatTabsModule, MatMenuModule
 } from '@angular/material';
 import { MaterialDesignNavbarComponent } from './components/material-design-navbar/material-design-navbar.component';
 import { LayoutModule } from '@angular/cdk/layout';
@@ -49,6 +49,7 @@ import { OfferAddedComponent } from './components/create-offer/offer-added/offer
 import { OfferDetailsComponent } from './components/offer-details/offer-details.component';
 import { ConfirmMailComponent } from './components/confirm-mail/confirm-mail.component';
 import { ManageOffersComponent } from './components/manage-offers/manage-offers.component';
+import { MyAccountInfoComponent } from './components/users/my-account-info/my-account-info.component';
 
 @NgModule({
   declarations: [
@@ -75,6 +76,7 @@ import { ManageOffersComponent } from './components/manage-offers/manage-offers.
     OfferDetailsComponent,
     ConfirmMailComponent,
     ManageOffersComponent,
+    MyAccountInfoComponent,
   ],
   imports: [
     BrowserModule,
@@ -105,7 +107,8 @@ import { ManageOffersComponent } from './components/manage-offers/manage-offers.
     MatDialogModule,
     MatStepperModule,
     MatButtonToggleModule,
-    MatTabsModule
+    MatTabsModule,
+    MatMenuModule
   ],
   providers: [
     {
@@ -123,7 +126,8 @@ import { ManageOffersComponent } from './components/manage-offers/manage-offers.
     MatDialogModule,
     MatStepperModule,
     MatButtonToggleModule,
-    MatTabsModule
+    MatTabsModule,
+    MatMenuModule
   ],
   entryComponents: [
     DeleteOfferDialogComponent

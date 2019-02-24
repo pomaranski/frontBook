@@ -1,0 +1,38 @@
+<div class="container h-100 mat-app-background">
+  <p class="display-4 p-lg-3">Your account:</p>
+  <div>
+    <mat-nav-list>
+      <mat-list-item>
+        <label matLine>Name:</label>
+        <span matLine class="text-black-50">
+          {{user?.name}}
+        </span>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>
+        <label matLine>Last name:</label>
+        <span matLine class="text-black-50">
+          {{user?.lastName}}
+        </span>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>
+        <label matLine>E-mail:</label>
+        <span matLine class="text-black-50">
+          {{user?.email}}
+        </span>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>
+        <label matLine>Password:</label>
+        <span matLine class="text-black-50">
+          ******
+        </span>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+    </mat-nav-list>
+    <div id="account-options">
+      <a class="text-danger">Change your password.</a>
+    </div>
+  </div>
+</div>

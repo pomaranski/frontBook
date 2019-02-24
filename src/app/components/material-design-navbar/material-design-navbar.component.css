@@ -21,3 +21,7 @@
 .active {
   background: rgba(124, 109, 82, 0.7);
 }
+
+#name-tag {
+  font-size: 12px;
+}

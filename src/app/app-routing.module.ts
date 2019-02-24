@@ -14,6 +14,7 @@ import {OfferAddedComponent} from './components/create-offer/offer-added/offer-a
 import {OfferDetailsComponent} from './components/offer-details/offer-details.component';
 import {ConfirmMailComponent} from './components/confirm-mail/confirm-mail.component';
 import {ManageOffersComponent} from './components/manage-offers/manage-offers.component';
+import {MyAccountInfoComponent} from './components/users/my-account-info/my-account-info.component';
 
 const routes: Routes = [
   {path: '', component: StartComponent},
@@ -44,7 +45,8 @@ const routes: Routes = [
       {path: 'new_offer', component: CreateOfferComponent},
       {path: 'edit_offer/:id', component: EditOfferComponent},
       {path: 'offer_details/:id', component: OfferDetailsComponent},
-      {path: 'offer_added/:id', component: OfferAddedComponent}
+      {path: 'offer_added/:id', component: OfferAddedComponent},
+      {path: 'my_account', component: MyAccountInfoComponent}
     ],
     canActivate: [AuthGuard]
   },

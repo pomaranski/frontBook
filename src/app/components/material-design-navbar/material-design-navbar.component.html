@@ -3,15 +3,27 @@
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="false">
-    <mat-toolbar (click)="drawer.toggle()">Menu</mat-toolbar>
+    <mat-toolbar>
+      <button (click)="drawer.toggle()" mat-icon-button routerLink="/my_account">
+        <mat-icon>account_circle</mat-icon>
+      </button>
+      <small (click)="drawer.toggle()" id="name-tag" class="font-weight-light">
+        {{currentUser?.name}} {{currentUser?.lastName}}
+      </small>
+      <button mat-icon-button [matMenuTriggerFor]="appMenu">
+        <mat-icon>expand_more</mat-icon>
+      </button>
+      <mat-menu #appMenu="matMenu">
+        <button (click)="drawer.toggle()" mat-menu-item routerLink="/my_account">User details</button>
+        <button  mat-menu-item (click)="logout(); drawer.toggle()" routerLink="/#">Logout</button>
+      </mat-menu>
+    </mat-toolbar>
     <mat-nav-list>
       <a mat-list-item routerLink="/home" (click)="drawer.toggle()" routerLinkActive="active">Home</a>
       <mat-divider></mat-divider>
       <a mat-list-item routerLink="/new_offer" (click)="drawer.toggle()" routerLinkActive="active">New offer</a>
       <mat-divider></mat-divider>
       <a mat-list-item routerLink="/manage_offers/my_offers" (click)="drawer.toggle()" routerLinkActive="active">Manage offers</a>
-      <mat-divider></mat-divider>
-      <a mat-list-item href="#" (click)="logout()">Logout</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
