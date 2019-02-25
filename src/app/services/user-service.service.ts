@@ -21,4 +21,8 @@ export class UserService {
     return this.http.get<UserView>(this.URL + '/users/' + id);
   }
 
+  changePassword(id: string, passwordChange: any) {
+    return this.http.put(this.URL + `/users/change_password/${id}`, passwordChange);
+  }
+
 }

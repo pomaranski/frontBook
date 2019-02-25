@@ -50,6 +50,7 @@ import { OfferDetailsComponent } from './components/offer-details/offer-details.
 import { ConfirmMailComponent } from './components/confirm-mail/confirm-mail.component';
 import { ManageOffersComponent } from './components/manage-offers/manage-offers.component';
 import { MyAccountInfoComponent } from './components/users/my-account-info/my-account-info.component';
+import { PasswordChangeDialogComponent } from './components/users/my-account-info/password-change-dialog/password-change-dialog.component';
 
 @NgModule({
   declarations: [
@@ -77,6 +78,7 @@ import { MyAccountInfoComponent } from './components/users/my-account-info/my-ac
     ConfirmMailComponent,
     ManageOffersComponent,
     MyAccountInfoComponent,
+    PasswordChangeDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -130,7 +132,8 @@ import { MyAccountInfoComponent } from './components/users/my-account-info/my-ac
     MatMenuModule
   ],
   entryComponents: [
-    DeleteOfferDialogComponent
+    DeleteOfferDialogComponent,
+    PasswordChangeDialogComponent
   ]
 })
 export class AppModule {

@@ -22,6 +22,9 @@
         <button mat-icon-button routerLink="/edit_offer/{{offer.id}}">
           <mat-icon>edit</mat-icon>
         </button>
+        <button mat-icon-button (click)="onDelete(offer.id, offer.offerName)">
+          <mat-icon>delete</mat-icon>
+        </button>
       </mat-list-item>
     </mat-nav-list>
   </div>

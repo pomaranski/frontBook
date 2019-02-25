@@ -16,6 +16,8 @@ export class RequiredPasswordFieldComponent implements OnInit, ControlValueAcces
 
   @Input('name') name: string;
 
+  @Input('label') label = 'Password';
+
   value: string;
 
   onChange: (_: any) => void = (_: any) => {};
