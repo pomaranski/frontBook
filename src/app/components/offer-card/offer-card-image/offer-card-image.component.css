@@ -1,23 +1,26 @@
 :host {
   display: block;
-  width: 100%;
 }
 
 .image-div {
-  width: 100%;
-}
-
-img {
-  max-width: 450px;
-  max-height: 450px;
   margin: 0 auto;
   display: block;
 }
 
-@media only screen and (max-width: 768px) {
+img {
+  margin: 0 auto;
+  max-width: 300px;
+  display: block;
+}
+
+@media only screen and (max-width: 430px) {
   img {
-    margin-bottom: 50px;
-    max-width: 300px;
-    max-height: 300px;
+    max-width: 200px;
+  }
+}
+
+@media only screen and (max-width: 330px) {
+  img {
+    max-width: 120px;
   }
 }

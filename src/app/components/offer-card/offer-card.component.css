@@ -1,48 +1,12 @@
-.ofcard-book-titles {
-  font-style: oblique;
-}
-
-.ofrow {
-  padding: 30px;
-  margin: 0;
-}
-.ofcontent {
-  padding: 30px;
-}
-
-.single-offer {
+.ofcard {
   margin-bottom: 50px;
 }
 
-.ofcard-header {
-  font-style: oblique;
+.expired {
+ opacity: 0.3;
 }
 
-.single-offer {
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  box-shadow: 0 0 15px black;
-}
-
-#ofdata th{
-  color: #5d7c6e;
-}
-
-.card-header {
-  background: #7c664a;
-  color: beige;
-}
-
-.text-info {
-  font-size: 10rem;
-  text-align: center;
-  margin-top: -50px;
-}
-
-@media only screen and (max-width: 768px) {
-  .text-info {
-    font-size: 5rem;
-    text-align: center;
-    margin-top: -50px;
-  }
+.offer-title {
+  background: #7c5d3b;
+  color: whitesmoke;
 }

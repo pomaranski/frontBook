@@ -1,7 +1,8 @@
-<div class="image-div" *ngIf="image else noImage">
-  <img [src]="image">
+<div class="image-div" >
+  <ng-container *ngIf="image else noImage">
+    <img [src]="image">
+  </ng-container>
 </div>
-
 <ng-template #noImage>
   <img src="../../../../assets/img/placeholder_img.png">
 </ng-template>

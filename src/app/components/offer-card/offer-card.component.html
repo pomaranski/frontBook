@@ -1,38 +1,37 @@
-<div class="single-offer">
-  <div class="card card-container">
-    <div class="card-header">
-      <span class="decor-font ">B</span>
-      <span class="ofcard-header" >{{offer.offerName}}</span>
-    </div>
-    <div class="ofcontent">
-      <div class="row">
-        <div class="col-md-6">
-          <div class="ofimage-div">
-              <app-offer-card-image [offer]="offer"></app-offer-card-image>
-          </div>
-        </div>
-        <div class="col-5">
-          <table id="ofdata" class="table">
-            <tr>
-              <th>Book title:</th>
-              <td>{{offer.bookTitle}}</td>
-            </tr>
-            <tr>
-              <th>City: </th>
-              <td>{{offer.city}}</td>
-            </tr>
-            <tr>
-              <th>Voivodeship: </th>
-              <td>{{offer.voivodeship}}</td>
-            </tr>
-            <tr>
-              <th>Category: </th>
-              <td>{{offer.category?.name}}</td>
-            </tr>
-          </table>
-          <button class="w-100" mat-raised-button routerLink="/offer_details/{{offer.id}}">Details...</button>
-        </div>
-      </div>
-    </div>
+<mat-card class="ofcard" [class.expired]="isExpired()">
+  <mat-card-title class="offer-title">
+    <span class="decor-font ">B</span>
+    <span >{{offer.offerName}}</span>
+  </mat-card-title>
+  <mat-card-subtitle>
+    expires: {{offer.expires ? offer.expires : 'Indefinite'}}
+  </mat-card-subtitle>
+  <div class="w-100 p-3">
+    <app-offer-card-image [offer]="offer"></app-offer-card-image>
   </div>
-</div>
+  <mat-card-content>
+      <table class="table">
+        <tr>
+          <th>Book title:</th>
+          <td>{{offer.bookTitle}}</td>
+        </tr>
+        <tr>
+          <th>City: </th>
+          <td>{{offer.city}}</td>
+        </tr>
+        <tr>
+          <th>Voivodeship: </th>
+          <td>{{offer.voivodeship}}</td>
+        </tr>
+        <tr>
+          <th>Category: </th>
+          <td>{{offer.category?.name}}</td>
+        </tr>
+      </table>
+  </mat-card-content>
+  <mat-card-actions>
+    <button *ngIf="!isExpired()" class="w-100" mat-raised-button routerLink="/offer_details/{{offer.id}}">Details...</button>
+  </mat-card-actions>
+  <mat-card-footer>
+  </mat-card-footer>
+</mat-card>

@@ -1,72 +1,69 @@
-<div class="single-offer h-100 mat-app-background">
-  <div class="card card-container" >
-    <div class="card-header">
-      <span class="decor-font ">B</span>
-      <span class="ofcard-header" >{{offer.offerName}}</span>
-    </div>
-    <div class="ofcontent">
-      <div class="row">
-        <div class="col-md-6">
-          <div class="ofimage-div">
-            <app-offer-card-image [offer]="offer"></app-offer-card-image>
-          </div>
-        </div>
-        <div class="col-5">
-          <table class="table ofdata">
-            <tr>
-              <th>Book title:</th>
-              <td>{{offer.bookTitle}}</td>
-            </tr>
-            <tr>
-              <th>City: </th>
-              <td>{{offer.city}}</td>
-            </tr>
-            <tr>
-              <th>Voivodeship: </th>
-              <td>{{offer.voivodeship}}</td>
-            </tr>
-            <tr>
-              <th>Category: </th>
-              <td>{{offer.category?.name}}</td>
-            </tr>
-          </table>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-10">
-        <table class="table ofdata">
-          <tr>
-            <th>Description:</th>
-            <td>{{offer.description}}</td>
-          </tr>
-          <tr>
-            <th>Expires: </th>
-            <td>{{offer.expires}}</td>
-          </tr>
-          <tr>
-            <th>Book publisher: </th>
-            <td>{{offer.bookPublisher}}</td>
-          </tr>
-          <tr>
-            <th>Release year: </th>
-            <td>{{offer.bookReleaseYear}}</td>
-          </tr>
-          <tr>
-            <th>Posted by: </th>
-            <td>{{offer.offerOwner?.name}} {{offer.offerOwner?.lastName}}</td>
-          </tr>
-        </table>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="w-100" *ngIf="offer.offerOwner?.id !== tokenService.decodeToken().userID; else editOfferButton">
-        <button mat-raised-button class="w-100">Book the offer!</button>
-      </div>
-      <ng-template #editOfferButton>
-        <button mat-raised-button class="w-100" routerLink="/edit_offer/{{offer.id}}">Edit</button>
-      </ng-template>
-    </div>
+<mat-card class="ofcard" [class.expired]="isExpired()">
+  <mat-card-title class="offer-title">
+    <span class="decor-font ">B</span>
+    <span >{{offer.offerName}}</span>
+  </mat-card-title>
+  <mat-card-subtitle>
+    expires: {{offer.expires ? offer.expires : 'Indefinite'}}
+  </mat-card-subtitle>
+  <div class="w-100 p-3">
+    <app-offer-card-image [offer]="offer"></app-offer-card-image>
   </div>
-</div>
+  <mat-card-content class="mt-2">
+    <mat-list>
+      <mat-list-item class="mb-4">
+        <span matLine class="cat-title">
+         <span class="mat-headline">Book:</span>
+        </span>
+        <span matLine>
+          <span matLine>Title:
+            {{offer.bookTitle}}</span>
+
+          <span matLine>Category:
+          {{offer.category}}</span>
+
+          <span matLine>Release year:
+          {{offer.bookReleaseYear}}</span>
+
+          <span matLine>Publisher:
+          {{offer.bookPublisher}}</span>
+        </span>
+      </mat-list-item>
+      <mat-list-item>
+        <span matLine class="cat-title">
+          <span class="mat-headline">Location:</span>
+        </span>
+        <span matLine>
+          <span matLine>
+            <span>City:</span>
+            {{offer.city}}</span>
+
+          <span matLine>Voivodeship:
+            {{offer.voivodeship}}</span>
+        </span>
+      </mat-list-item>
+      <mat-list-item>
+        <span matLine class="cat-title">
+          <span class="mat-headline">Description:</span>
+        </span>
+        <span matLine class="description-text">{{offer.description}}</span>
+      </mat-list-item>
+      <mat-list-item>
+        <span matLine class="cat-title">
+          <span class="mat-headline">Created by:</span>
+        </span>
+        <span matLine>{{offer.offerOwner?.name}} {{offer.offerOwner?.lastName}}</span>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+  <mat-card-actions *ngIf="!isExpired()">
+    <div class="w-100" *ngIf="offer.offerOwner?.id !== tokenService.decodeToken().userID; else editOfferButton">
+      <button mat-raised-button class="w-100">Book the offer!</button>
+    </div>
+    <ng-template #editOfferButton>
+      <button mat-raised-button class="w-100" routerLink="/edit_offer/{{offer.id}}">Edit</button>
+    </ng-template>
+  </mat-card-actions>
+  <mat-card-footer>
+  </mat-card-footer>
+</mat-card>

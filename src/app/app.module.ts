@@ -40,7 +40,7 @@ import {
   MatDialogModule,
   MatStepperModule,
   MatButtonToggleModule,
-  MatTabsModule, MatMenuModule
+  MatTabsModule, MatMenuModule, MatCardModule
 } from '@angular/material';
 import { MaterialDesignNavbarComponent } from './components/material-design-navbar/material-design-navbar.component';
 import { LayoutModule } from '@angular/cdk/layout';
@@ -110,7 +110,8 @@ import { PasswordChangeDialogComponent } from './components/users/my-account-inf
     MatStepperModule,
     MatButtonToggleModule,
     MatTabsModule,
-    MatMenuModule
+    MatMenuModule,
+    MatCardModule
   ],
   providers: [
     {
@@ -129,7 +130,8 @@ import { PasswordChangeDialogComponent } from './components/users/my-account-inf
     MatStepperModule,
     MatButtonToggleModule,
     MatTabsModule,
-    MatMenuModule
+    MatMenuModule,
+    MatCardModule
   ],
   entryComponents: [
     DeleteOfferDialogComponent,

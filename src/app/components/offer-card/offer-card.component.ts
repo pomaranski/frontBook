@@ -18,4 +18,16 @@ export class OfferCardComponent implements OnInit {
   ngOnInit() {
   }
 
+  isExpired(): boolean {
+    if (this.offer.expires ) {
+      const dateOnly = this.offer.expires.split(' ')[0];
+      const offerTime = new Date(dateOnly);
+      const now = Date.now();
+      if (now < offerTime.getTime()) {
+        return true;
+      }
+      return false;
+    }
+    return false;
+  }
 }
